@@ -3,6 +3,7 @@ import 'dart:ui';
 import 'package:chesterjetpack/screens/BaseWidget.dart';
 import 'package:flame/components/component.dart';
 import 'package:flame/sprite.dart';
+import 'package:flutter/src/gestures/tap.dart';
 
 class Background extends BaseWidget {
   SpriteComponent _bgSprite;
@@ -24,4 +25,7 @@ class Background extends BaseWidget {
 
   @override
   void update() {}
+
+  @override
+  void onTapDown(TapDownDetails detail, Function fn) {}
 }
