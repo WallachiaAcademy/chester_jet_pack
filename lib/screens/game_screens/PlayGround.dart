@@ -2,14 +2,14 @@ import 'dart:ui';
 
 import 'package:chesterjetpack/screens/BaseWidget.dart';
 import 'package:chesterjetpack/screens/game/Player.dart';
-import 'package:chesterjetpack/screens/utils/Background.dart';
+import 'package:chesterjetpack/screens/utils/DynamicBackground.dart';
 import 'package:flutter/src/gestures/tap.dart';
 
 class PlayGround extends BaseWidget {
-  Background _bg;
+  BaseWidget _bg;
   Player _player;
   PlayGround() {
-    _bg = Background('play_ground/background.png');
+    _bg = DynamicBackground(5, 'play_ground/background.png');
     _player = Player();
   }
   @override
@@ -32,5 +32,6 @@ class PlayGround extends BaseWidget {
   @override
   void update() {
     _player.update();
+    _bg.update();
   }
 }
