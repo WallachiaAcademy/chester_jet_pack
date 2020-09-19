@@ -1,13 +1,14 @@
 import 'dart:ui';
 
 import 'package:chesterjetpack/screens/BaseWidget.dart';
+import 'package:chesterjetpack/screens/BasedTimedWidget.dart';
 import 'package:chesterjetpack/screens/game_screens/ScreenManager.dart';
 import 'package:chesterjetpack/screens/game_screens/ScreenState.dart';
 import 'package:chesterjetpack/screens/utils/Background.dart';
 import 'package:chesterjetpack/screens/utils/Controller.dart';
 import 'package:flutter/src/gestures/tap.dart';
 
-class MainScreen extends BaseWidget {
+class MainScreen extends BaseTimedWidget {
   Background _background;
   BaseWidget _startButton;
   BaseWidget _logo;
@@ -33,7 +34,7 @@ class MainScreen extends BaseWidget {
   }
 
   @override
-  void update() {
+  void update(double t) {
     _background?.update();
     _startButton?.update();
     _logo?.update();

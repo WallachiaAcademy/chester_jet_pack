@@ -1,7 +1,7 @@
 import 'dart:async';
 import 'dart:ui';
 
-import 'package:chesterjetpack/screens/BaseWidget.dart';
+import 'package:chesterjetpack/screens/BasedTimedWidget.dart';
 import 'package:chesterjetpack/screens/game_screens/PlayGround.dart';
 import 'package:chesterjetpack/screens/game_screens/ScreenState.dart';
 import 'package:flame/game/game.dart';
@@ -21,8 +21,8 @@ class ScreenManager extends Game with TapDetector {
   Size size = Size(0, 0);
 
   // Screens
-  BaseWidget _mainScreen;
-  BaseWidget _playScreen;
+  BaseTimedWidget _mainScreen;
+  BaseTimedWidget _playScreen;
 
   ScreenManager() {
     _fn = _init;
@@ -43,10 +43,10 @@ class ScreenManager extends Game with TapDetector {
 
   @override
   void update(double t) {
-    _fn();
+    _fn(t);
   }
 
-  Future<void> _init() async {
+  Future<void> _init(double t) async {
     _fn = _update;
     _mainScreen = MainScreen();
     _playScreen = PlayGround();
@@ -56,15 +56,15 @@ class ScreenManager extends Game with TapDetector {
     await flameUtils.setOrientation(DeviceOrientation.landscapeLeft);
   }
 
-  void _update() {
-    _getActiveScreen()?.update();
+  void _update(double t) {
+    _getActiveScreen()?.update(t);
   }
 
   void onTapDown(TapDownDetails details) {
     _getActiveScreen()?.onTapDown(details, () {});
   }
 
-  BaseWidget _getActiveScreen() {
+  BaseTimedWidget _getActiveScreen() {
     switch (_screenState) {
       case ScreenState.kMenuScreen:
         return _mainScreen;

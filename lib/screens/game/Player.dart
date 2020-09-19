@@ -1,15 +1,20 @@
 import 'dart:ui';
 
-import 'package:chesterjetpack/screens/BaseWidget.dart';
-import 'package:flame/components/component.dart';
+import 'package:flame/animation.dart';
+import 'package:flame/components/animation_component.dart';
 import 'package:flame/sprite.dart';
 import 'package:flutter/src/gestures/tap.dart';
 
-class Player extends BaseWidget {
-  SpriteComponent _player;
+import '../BasedTimedWidget.dart';
+
+class Player extends BaseTimedWidget {
+  AnimationComponent _player;
 
   Player() {
-    _player = SpriteComponent.fromSprite(0, 0, Sprite('player/player.png'));
+    List<Sprite> sprites =
+        [1, 2, 3, 4].map((e) => Sprite('player/${e}.png')).toList();
+    _player =
+        AnimationComponent(0, 0, Animation.spriteList(sprites, stepTime: 0.1));
   }
   @override
   void onTapDown(TapDownDetails detail, Function fn) {
@@ -32,7 +37,7 @@ class Player extends BaseWidget {
   }
 
   @override
-  void update() {
-    // TODO: implement update
+  void update(double t) {
+    _player.update(t);
   }
 }
