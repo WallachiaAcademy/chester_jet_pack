@@ -17,7 +17,7 @@ class MainScreen extends BaseTimedWidget {
     _background = Background('menu/Background.png');
 
     _startButton = Controller(0.35, 0.5, 0.3, 0.15, 'menu/start_btn.png');
-    _logo = Controller(0.2, 0.2, 0.6, 0.3, 'menu/logo.png');
+    _logo = Controller(0.25, 0.15, 0.5, 0.3, 'menu/logo.png');
   }
   @override
   void render(Canvas canvas) {
