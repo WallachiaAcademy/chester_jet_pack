@@ -1,11 +1,11 @@
 import 'dart:ui';
 
-import 'package:chesterjetpack/screens/BasedTimedWidget.dart';
+import 'package:chesterjetpack/screens/game/enemies/BaseEnemy.dart';
 import 'package:flame/components/component.dart';
 import 'package:flame/sprite.dart';
 import 'package:flutter/src/gestures/tap.dart';
 
-class Rocket extends BaseTimedWidget {
+class Rocket extends BaseEnemy {
   SpriteComponent _rocket;
 
   double _x;
@@ -40,7 +40,10 @@ class Rocket extends BaseTimedWidget {
   @override
   void update(double t) {
     _x -= t * _size.width / 2;
+  }
 
-    if (_x < -_rocket.width) _x = _size.width + _rocket.width;
+  @override
+  bool isDead() {
+    return _x < -_rocket.width;
   }
 }
