@@ -1,5 +1,6 @@
 import 'dart:ui';
 
+import 'package:chesterjetpack/screens/game/enemies/EnemiesFactory.dart';
 import 'package:flame/animation.dart';
 import 'package:flame/components/animation_component.dart';
 import 'package:flame/sprite.dart';
@@ -76,5 +77,10 @@ class Player extends BaseTimedWidget {
 
     _player.update(t);
     _smoke.update(t);
+
+    var rect = _player.toRect();
+    for (var e in enemiesFactory.enemies) {
+      if (e.overlaps(rect)) e.hit();
+    }
   }
 }

@@ -24,8 +24,8 @@ class PlayGround extends BaseTimedWidget {
   @override
   void render(Canvas canvas) {
     _bg.render(canvas);
-    _player.render(canvas);
     enemiesFactory.render(canvas);
+    _player.render(canvas);
   }
 
   @override

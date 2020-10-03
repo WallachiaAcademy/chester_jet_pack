@@ -1,3 +1,4 @@
+import 'dart:math';
 import 'dart:ui';
 
 import 'package:chesterjetpack/screens/game/enemies/BaseEnemy.dart';
@@ -10,6 +11,7 @@ class Rocket extends BaseEnemy {
 
   double _x;
   Size _size = Size(0, 0);
+  bool _dead = false;
 
   Rocket() {
     _rocket = SpriteComponent.fromSprite(0, 0, Sprite('enemies/rocket.png'));
@@ -32,8 +34,8 @@ class Rocket extends BaseEnemy {
 
     _rocket.width = size.width * 0.12;
     _rocket.height = size.height * 0.08;
-
-    _rocket.y = size.height / 2;
+    Random r = Random();
+    _rocket.y = size.height * 0.2 + size.height * 0.2 * r.nextInt(3);
     _x = size.width + _rocket.width;
   }
 
@@ -44,6 +46,16 @@ class Rocket extends BaseEnemy {
 
   @override
   bool isDead() {
-    return _x < -_rocket.width;
+    return _x < -_rocket.width || _dead;
+  }
+
+  @override
+  void hit() {
+    _dead = true;
+  }
+
+  @override
+  bool overlaps(Rect rect) {
+    return _rocket.toRect().overlaps(rect);
   }
 }

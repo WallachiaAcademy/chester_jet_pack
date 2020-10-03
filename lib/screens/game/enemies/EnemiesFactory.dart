@@ -9,8 +9,13 @@ EnemiesFactory enemiesFactory = EnemiesFactory();
 
 class EnemiesFactory {
   List<BaseEnemy> enemies;
+
   double _time = 0;
   Size _size = Size(0, 0);
+
+  double _rocketSpeed = 5;
+  double _rocketThr = 5;
+
   EnemiesFactory() {
     enemies = List<BaseEnemy>();
   }
@@ -35,6 +40,7 @@ class EnemiesFactory {
   @override
   void update(double t) {
     // Update
+    _time += t;
     for (var e in enemies) e.update(t);
 
     // Cleanup
@@ -45,13 +51,16 @@ class EnemiesFactory {
     }
 
     //Spawning
-    // TODO: to rework here
-    _time += t;
-    if (_time > 1) {
-      _time -= 1;
+    _spawnRocket();
+  }
+
+  void _spawnRocket() {
+    if (_time > _rocketThr) {
       Rocket r = Rocket();
       r.resize(_size);
       enemies.add(r);
+
+      _rocketThr += _rocketSpeed;
     }
   }
 }
