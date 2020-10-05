@@ -1,16 +1,17 @@
-# chesterjetpack
+# ChesterJetPack
 
-A new Flutter application.
+Chester Jet Pack is a game similar to Flappy Bird.
 
-## Getting Started
+## Description
 
-This project is a starting point for a Flutter application.
+This game is made to explain how to build cross platform phone games using Flutter and Flame for both Android and iOS.
 
-A few resources to get you started if this is your first Flutter project:
+Even if you are not a software engineer you can still use this series as a starting point for your programming carrier.
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+Chester Jet Pack is a game similar to Flappy Bird.
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Link to the youtube playlist: https://www.youtube.com/watch?v=XfZG-SKYE3Y&list=PLed3DrfS7NflAQC4a6aoesqobHsO1BXoT&index=1
+
+Facebook: https://www.facebook.com/Wallachia.Academy
+Instagram: https://www.instagram.com/Wallachia.Academy
+
