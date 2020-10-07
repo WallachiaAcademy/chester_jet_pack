@@ -1,8 +1,8 @@
 import 'dart:ui';
 
-import 'package:chesterjetpack/screens/BasedTimedWidget.dart';
+import 'package:chesterjetpack/screens/BaseWidget.dart';
 
-abstract class BaseEnemy extends BaseTimedWidget {
+abstract class BaseEnemy extends BaseWidget {
   bool isDead();
 
   void hit();

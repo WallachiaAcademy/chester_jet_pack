@@ -7,7 +7,7 @@ abstract class BaseWidget {
 
   void render(Canvas canvas);
 
-  void update();
+  void update(double t);
 
   void onTapDown(TapDownDetails detail, Function fn);
 }

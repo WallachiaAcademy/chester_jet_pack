@@ -5,16 +5,20 @@ import 'package:flame/components/component.dart';
 import 'package:flame/sprite.dart';
 import 'package:flutter/src/gestures/tap.dart';
 
-class DynamicBackground extends BaseWidget {
+class RepetitiveAsset extends BaseWidget {
   final double _speed;
 
-  SpriteComponent _bg;
+  SpriteComponent _asset;
+
   double _x;
+
+  final double _hRatio;
+  final double _yRatio;
 
   Size _size;
 
-  DynamicBackground(this._speed, String imgSrc) {
-    _bg = SpriteComponent.fromSprite(0, 0, Sprite(imgSrc));
+  RepetitiveAsset(this._hRatio, this._yRatio, this._speed, String imgSrc) {
+    _asset = SpriteComponent.fromSprite(0, 0, Sprite(imgSrc));
     _x = 0;
     _size = Size(0, 0);
   }
@@ -26,21 +30,22 @@ class DynamicBackground extends BaseWidget {
   @override
   void render(Canvas canvas) {
     canvas.save();
-    _bg.x = _x + _size.width * 0.995;
-    _bg.render(canvas);
+    _asset.x = _x + _size.width * 0.995;
+    _asset.render(canvas);
     canvas.restore();
 
     canvas.save();
-    _bg.x = _x;
-    _bg.render(canvas);
+    _asset.x = _x;
+    _asset.render(canvas);
     canvas.restore();
   }
 
   @override
   void resize(Size size) {
     this._size = size;
-    _bg.width = size.width;
-    _bg.height = size.height;
+    _asset.width = size.width;
+    _asset.height = size.height * _hRatio;
+    _asset.y = size.height * _yRatio;
   }
 
   @override

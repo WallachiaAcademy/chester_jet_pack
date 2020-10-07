@@ -33,7 +33,7 @@ class Controller extends BaseWidget {
   }
 
   @override
-  void update() {
+  void update(double t) {
     // TODO: implement update
   }
 

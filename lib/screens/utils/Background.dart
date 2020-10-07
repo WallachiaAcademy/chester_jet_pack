@@ -24,7 +24,7 @@ class Background extends BaseWidget {
   }
 
   @override
-  void update() {}
+  void update(double t) {}
 
   @override
   void onTapDown(TapDownDetails detail, Function fn) {}

@@ -6,9 +6,9 @@ import 'package:flame/components/animation_component.dart';
 import 'package:flame/sprite.dart';
 import 'package:flutter/src/gestures/tap.dart';
 
-import '../BasedTimedWidget.dart';
+import '../BaseWidget.dart';
 
-class Player extends BaseTimedWidget {
+class Player extends BaseWidget {
   AnimationComponent _player;
   AnimationComponent _smoke;
   double _speed;

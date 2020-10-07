@@ -1,17 +1,25 @@
 import 'dart:ui';
 
 import 'package:chesterjetpack/screens/BaseWidget.dart';
-import 'package:chesterjetpack/screens/BasedTimedWidget.dart';
 import 'package:chesterjetpack/screens/game/Player.dart';
 import 'package:chesterjetpack/screens/game/enemies/EnemiesFactory.dart';
 import 'package:chesterjetpack/screens/utils/DynamicBackground.dart';
+import 'package:chesterjetpack/screens/utils/RepetitiveAsset.dart';
 import 'package:flutter/src/gestures/tap.dart';
 
-class PlayGround extends BaseTimedWidget {
+import '../BaseWidget.dart';
+
+class PlayGround extends BaseWidget {
   BaseWidget _bg;
+  BaseWidget _topBorder;
+  BaseWidget _botBorder;
+
   Player _player;
+
   PlayGround() {
-    _bg = DynamicBackground(5, 'play_ground/background.png');
+    _bg = DynamicBackground(0.2, 'play_ground/background.png');
+    _topBorder = RepetitiveAsset(0.02, 0, 0.2, 'play_ground/border.png');
+    _botBorder = RepetitiveAsset(0.02, 0.98, 0.2, 'play_ground/border.png');
     _player = Player();
     enemiesFactory.reset();
   }
@@ -24,6 +32,8 @@ class PlayGround extends BaseTimedWidget {
   @override
   void render(Canvas canvas) {
     _bg.render(canvas);
+    _topBorder.render(canvas);
+    _botBorder.render(canvas);
     enemiesFactory.render(canvas);
     _player.render(canvas);
   }
@@ -31,6 +41,8 @@ class PlayGround extends BaseTimedWidget {
   @override
   void resize(Size size) {
     _bg.resize(size);
+    _topBorder.resize(size);
+    _botBorder.resize(size);
     _player.resize(size);
     enemiesFactory.resize(size);
   }
@@ -38,7 +50,9 @@ class PlayGround extends BaseTimedWidget {
   @override
   void update(double t) {
     _player.update(t);
-    _bg.update();
+    _bg.update(t);
+    _topBorder.update(t);
+    _botBorder.update(t);
     enemiesFactory.update(t);
   }
 }
