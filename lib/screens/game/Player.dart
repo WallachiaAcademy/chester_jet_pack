@@ -1,12 +1,12 @@
 import 'dart:ui';
 
-import 'package:chesterjetpack/screens/game/enemies/EnemiesFactory.dart';
 import 'package:flame/animation.dart';
 import 'package:flame/components/animation_component.dart';
 import 'package:flame/sprite.dart';
 import 'package:flutter/src/gestures/tap.dart';
 
 import '../BaseWidget.dart';
+import 'story/StoryHandler.dart';
 
 class Player extends BaseWidget {
   AnimationComponent _player;
@@ -79,7 +79,7 @@ class Player extends BaseWidget {
     _smoke.update(t);
 
     var rect = _player.toRect();
-    for (var e in enemiesFactory.enemies) {
+    for (var e in storyHandler.entities) {
       if (e.overlaps(rect)) e.hit();
     }
   }

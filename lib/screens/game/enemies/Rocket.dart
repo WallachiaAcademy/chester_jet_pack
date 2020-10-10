@@ -1,12 +1,12 @@
 import 'dart:math';
 import 'dart:ui';
 
-import 'package:chesterjetpack/screens/game/enemies/BaseEnemy.dart';
+import 'package:chesterjetpack/screens/game/BaseEntity.dart';
 import 'package:flame/components/component.dart';
 import 'package:flame/sprite.dart';
 import 'package:flutter/src/gestures/tap.dart';
 
-class Rocket extends BaseEnemy {
+class Rocket extends BaseEntity {
   SpriteComponent _rocket;
 
   double _x;
