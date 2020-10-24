@@ -1,9 +1,9 @@
-const int kRocket = 0;
+import 'package:chesterjetpack/screens/game/entities/EntityType.dart';
 
 class Step {
   final int spawnTime;
-  final int entityType;
-  final List<int> args;
+  final EntityType entityType;
+  final List<double> args;
 
   Step(this.spawnTime, this.entityType, this.args);
 }

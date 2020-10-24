@@ -46,6 +46,8 @@ flutter:
     - assets/images/play_ground/
     - assets/images/player/
     - assets/images/enemies/rocket/
+    - assets/images/common/
+    - assets/images/enemies/bomb/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

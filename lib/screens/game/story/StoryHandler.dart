@@ -1,10 +1,12 @@
 import 'dart:collection';
 import 'dart:ui';
 
+import 'package:chesterjetpack/screens/game/enemies/Bomb.dart';
+import 'package:chesterjetpack/screens/game/entities/EntityType.dart';
 import 'package:flutter/src/gestures/tap.dart';
 
-import '../BaseEntity.dart';
 import '../enemies/Rocket.dart';
+import '../entities/BaseEntity.dart';
 import 'Step.dart';
 
 StoryHandler storyHandler = StoryHandler();
@@ -23,13 +25,14 @@ class StoryHandler {
 
   void _populateStory() {
     _steps.clear();
-    _steps.addLast(Step(1, kRocket, null));
-    _steps.addLast(Step(2, kRocket, null));
-    _steps.addLast(Step(3, kRocket, null));
+    _steps.addLast(Step(1, EntityType.Rocket, null));
+    _steps.addLast(Step(2, EntityType.Rocket, null));
+    _steps.addLast(Step(3, EntityType.Rocket, null));
+    _steps.addLast(Step(4, EntityType.Bomb, [0.7]));
 
-    _steps.addLast(Step(10, kRocket, null));
-    _steps.addLast(Step(11, kRocket, null));
-    _steps.addLast(Step(12, kRocket, null));
+    _steps.addLast(Step(10, EntityType.Rocket, null));
+    _steps.addLast(Step(11, EntityType.Rocket, null));
+    _steps.addLast(Step(12, EntityType.Rocket, null));
   }
 
   void reset() {
@@ -71,8 +74,11 @@ class StoryHandler {
       _steps.removeFirst();
 
       switch (curStep.entityType) {
-        case kRocket:
+        case EntityType.Rocket:
           _spawnRocket();
+          break;
+        case EntityType.Bomb:
+          _spawnBomb(curStep.args);
           break;
         default:
           throw new Exception("Unimplemented entity type " +
@@ -87,5 +93,11 @@ class StoryHandler {
     Rocket r = Rocket();
     r.resize(_size);
     entities.add(r);
+  }
+
+  void _spawnBomb(List<double> args) {
+    Bomb b = Bomb(args);
+    b.resize(_size);
+    entities.add(b);
   }
 }

@@ -1,7 +1,7 @@
 import 'dart:math';
 import 'dart:ui';
 
-import 'package:chesterjetpack/screens/game/BaseEntity.dart';
+import 'package:chesterjetpack/screens/game/entities/BaseEntity.dart';
 import 'package:flame/components/component.dart';
 import 'package:flame/sprite.dart';
 import 'package:flutter/src/gestures/tap.dart';
@@ -25,7 +25,7 @@ class Rocket extends BaseEntity {
     _explosion = List<SpriteComponent>();
     for (int i = 0; i < 5; i++) {
       _explosion.add(SpriteComponent.fromSprite(
-          0, 0, Sprite('enemies/rocket/' + i.toString() + '.png')));
+          0, 0, Sprite('common/' + i.toString() + '.png')));
     }
   }
 
