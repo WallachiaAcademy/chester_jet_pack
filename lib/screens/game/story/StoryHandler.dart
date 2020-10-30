@@ -2,6 +2,7 @@ import 'dart:collection';
 import 'dart:ui';
 
 import 'package:chesterjetpack/screens/game/enemies/Bomb.dart';
+import 'package:chesterjetpack/screens/game/enemies/ElectricObstacle.dart';
 import 'package:chesterjetpack/screens/game/entities/EntityType.dart';
 import 'package:flutter/src/gestures/tap.dart';
 
@@ -24,74 +25,11 @@ class StoryHandler {
 
   void _populateStory() {
     _steps.clear();
-    _steps.addLast(Step(1, EntityType.Rocket, [0.3]));
-    _steps.addLast(Step(1, EntityType.Rocket, [0.4]));
-    _steps.addLast(Step(1, EntityType.Rocket, [0.5]));
-    _steps.addLast(Step(1, EntityType.Rocket, [0.6]));
-    _steps.addLast(Step(1, EntityType.Rocket, [0.7]));
-
-    _steps.addLast(Step(1.2, EntityType.Rocket, [0.5]));
-    _steps.addLast(Step(1.4, EntityType.Rocket, [0.5]));
-
-    _steps.addLast(Step(1.6, EntityType.Rocket, [0.3]));
-    _steps.addLast(Step(1.6, EntityType.Rocket, [0.4]));
-    _steps.addLast(Step(1.6, EntityType.Rocket, [0.5]));
-    _steps.addLast(Step(1.6, EntityType.Rocket, [0.6]));
-    _steps.addLast(Step(1.6, EntityType.Rocket, [0.7]));
-
-    _steps.addLast(Step(2, EntityType.Rocket, [0.3]));
-    _steps.addLast(Step(2, EntityType.Rocket, [0.4]));
-    _steps.addLast(Step(2, EntityType.Rocket, [0.5]));
-    _steps.addLast(Step(2, EntityType.Rocket, [0.6]));
-    _steps.addLast(Step(2, EntityType.Rocket, [0.7]));
-
-    _steps.addLast(Step(2.2, EntityType.Rocket, [0.3]));
-    _steps.addLast(Step(2.2, EntityType.Rocket, [0.5]));
-    _steps.addLast(Step(2.2, EntityType.Rocket, [0.7]));
-
-    _steps.addLast(Step(2.4, EntityType.Rocket, [0.3]));
-    _steps.addLast(Step(2.4, EntityType.Rocket, [0.5]));
-    _steps.addLast(Step(2.4, EntityType.Rocket, [0.7]));
-
-    _steps.addLast(Step(2.8, EntityType.Rocket, [0.3]));
-    _steps.addLast(Step(2.8, EntityType.Rocket, [0.4]));
-    _steps.addLast(Step(2.8, EntityType.Rocket, [0.5]));
-    _steps.addLast(Step(2.8, EntityType.Rocket, [0.6]));
-    _steps.addLast(Step(2.8, EntityType.Rocket, [0.7]));
-
-    _steps.addLast(Step(3, EntityType.Rocket, [0.7]));
-    _steps.addLast(Step(3.2, EntityType.Rocket, [0.7]));
-
-    _steps.addLast(Step(3.6, EntityType.Rocket, [0.3]));
-    _steps.addLast(Step(3.6, EntityType.Rocket, [0.4]));
-    _steps.addLast(Step(3.6, EntityType.Rocket, [0.5]));
-    _steps.addLast(Step(3.6, EntityType.Rocket, [0.6]));
-    _steps.addLast(Step(3.6, EntityType.Rocket, [0.7]));
-
-    _steps.addLast(Step(3.8, EntityType.Rocket, [0.7]));
-    _steps.addLast(Step(4, EntityType.Rocket, [0.7]));
-
-    _steps.addLast(Step(4.4, EntityType.Rocket, [0.3]));
-    _steps.addLast(Step(4.4, EntityType.Rocket, [0.4]));
-    _steps.addLast(Step(4.4, EntityType.Rocket, [0.5]));
-    _steps.addLast(Step(4.4, EntityType.Rocket, [0.6]));
-    _steps.addLast(Step(4.4, EntityType.Rocket, [0.7]));
-
-    _steps.addLast(Step(4.6, EntityType.Rocket, [0.3]));
-    _steps.addLast(Step(4.6, EntityType.Rocket, [0.7]));
-
-    _steps.addLast(Step(4.8, EntityType.Rocket, [0.3]));
-    _steps.addLast(Step(4.8, EntityType.Rocket, [0.7]));
-
-    _steps.addLast(Step(5, EntityType.Rocket, [0.3]));
-    _steps.addLast(Step(5, EntityType.Rocket, [0.4]));
-    _steps.addLast(Step(5, EntityType.Rocket, [0.5]));
-    _steps.addLast(Step(5, EntityType.Rocket, [0.6]));
-    _steps.addLast(Step(5, EntityType.Rocket, [0.7]));
-
-    _steps.addLast(Step(5.4, EntityType.Bomb, [0.7]));
-    _steps.addLast(Step(5.6, EntityType.Bomb, [0.7]));
-    _steps.addLast(Step(5.8, EntityType.Bomb, [0.7]));
+    _steps.addLast(Step(4, EntityType.ElectricObstacle, [0.9]));
+    _steps.addLast(Step(6, EntityType.ElectricObstacle, [0.9]));
+    _steps.addLast(Step(8, EntityType.ElectricObstacle, [0.9]));
+    _steps.addLast(Step(10, EntityType.ElectricObstacle, [0.9]));
+    _steps.addLast(Step(12, EntityType.ElectricObstacle, [0.9]));
   }
 
   void reset() {
@@ -138,6 +76,9 @@ class StoryHandler {
         case EntityType.Bomb:
           _spawnBomb(curStep.args);
           break;
+        case EntityType.ElectricObstacle:
+          _spawnEletricObstacle(curStep.args);
+          break;
         default:
           throw new Exception("Unimplemented entity type " +
               curStep.entityType.toString() +
@@ -157,5 +98,11 @@ class StoryHandler {
     Bomb b = Bomb(args);
     b.resize();
     entities.add(b);
+  }
+
+  void _spawnEletricObstacle(List<double> args) {
+    ElectricObstacle _eo = ElectricObstacle(args);
+    _eo.resize();
+    entities.add(_eo);
   }
 }

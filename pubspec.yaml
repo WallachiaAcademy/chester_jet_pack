@@ -46,6 +46,7 @@ flutter:
     - assets/images/play_ground/
     - assets/images/player/
     - assets/images/enemies/rocket/
+    - assets/images/enemies/electric_obstacle/
     - assets/images/common/
     - assets/images/enemies/bomb/
 

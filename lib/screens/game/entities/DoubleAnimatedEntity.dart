@@ -87,16 +87,23 @@ abstract class DoubleAnimatedEntity extends BaseEntity {
 
   @mustCallSuper
   void updateSuper(double t, {double normalFact = 2, double dyingFactor = 4}) {
+    var width = 0.0;
     if (_entityState == EntityState.Normal) {
       _x -= t * screenSize.width / normalFact;
       _first.update(t);
+      width = _first.width;
     } else {
       _x -= t * screenSize.width / dyingFactor;
       _second.update(t);
-      if (_second.animation.done() || _x < 0) {
+      width = _second.width;
+
+      if (_second.animation.done()) {
         _second.animation.reversed(); // safety measure
         _entityState = EntityState.Dead;
       }
+    }
+    if (_x + width < 0) {
+      _entityState = EntityState.Dead;
     }
   }
 
