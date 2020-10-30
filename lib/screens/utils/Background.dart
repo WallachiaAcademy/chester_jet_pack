@@ -5,6 +5,8 @@ import 'package:flame/components/component.dart';
 import 'package:flame/sprite.dart';
 import 'package:flutter/src/gestures/tap.dart';
 
+import 'SizeHolder.dart';
+
 class Background extends BaseWidget {
   SpriteComponent _bgSprite;
 
@@ -18,9 +20,9 @@ class Background extends BaseWidget {
   }
 
   @override
-  void resize(Size size) {
-    _bgSprite.width = size.width;
-    _bgSprite.height = size.height;
+  void resize() {
+    _bgSprite.width = screenSize.width;
+    _bgSprite.height = screenSize.height;
   }
 
   @override

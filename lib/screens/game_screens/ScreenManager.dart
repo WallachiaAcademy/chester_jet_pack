@@ -4,6 +4,7 @@ import 'dart:ui';
 import 'package:chesterjetpack/screens/BaseWidget.dart';
 import 'package:chesterjetpack/screens/game_screens/PlayGround.dart';
 import 'package:chesterjetpack/screens/game_screens/ScreenState.dart';
+import 'package:chesterjetpack/screens/utils/SizeHolder.dart';
 import 'package:flame/game/game.dart';
 import 'package:flame/gestures.dart';
 import 'package:flame/util.dart';
@@ -18,8 +19,6 @@ class ScreenManager extends Game with TapDetector {
   Function _fn;
   ScreenState _screenState;
 
-  Size size = Size(0, 0);
-
   // Screens
   BaseWidget _mainScreen;
   BaseWidget _playScreen;
@@ -32,8 +31,8 @@ class ScreenManager extends Game with TapDetector {
 
   @override
   void resize(Size size) {
-    this.size = size;
-    _mainScreen?.resize(size);
+    screenSize = size;
+    _mainScreen?.resize();
   }
 
   @override
@@ -79,7 +78,7 @@ class ScreenManager extends Game with TapDetector {
     switch (newScreen) {
       case ScreenState.kMenuScreen:
         _mainScreen = MainScreen();
-        _mainScreen.resize(size);
+        _mainScreen.resize();
         Timer(Duration(milliseconds: 100), () {
           _screenState = newScreen;
         });
@@ -87,7 +86,7 @@ class ScreenManager extends Game with TapDetector {
         break;
       case ScreenState.kPlayScreen:
         _playScreen = PlayGround();
-        _playScreen.resize(size);
+        _playScreen.resize();
         Timer(Duration(milliseconds: 100), () {
           _screenState = newScreen;
         });

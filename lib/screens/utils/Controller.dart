@@ -5,6 +5,8 @@ import 'package:flame/components/component.dart';
 import 'package:flame/sprite.dart';
 import 'package:flutter/src/gestures/tap.dart';
 
+import 'SizeHolder.dart';
+
 class Controller extends BaseWidget {
   final double _xRatio;
   final double _yRatio;
@@ -25,11 +27,11 @@ class Controller extends BaseWidget {
   }
 
   @override
-  void resize(Size size) {
-    spriteComponent.x = size.width * _xRatio;
-    spriteComponent.y = size.height * _yRatio;
-    spriteComponent.width = size.width * _wRatio;
-    spriteComponent.height = size.height * _hRatio;
+  void resize() {
+    spriteComponent.x = screenSize.width * _xRatio;
+    spriteComponent.y = screenSize.height * _yRatio;
+    spriteComponent.width = screenSize.width * _wRatio;
+    spriteComponent.height = screenSize.height * _hRatio;
   }
 
   @override

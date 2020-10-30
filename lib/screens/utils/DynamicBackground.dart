@@ -5,18 +5,17 @@ import 'package:flame/components/component.dart';
 import 'package:flame/sprite.dart';
 import 'package:flutter/src/gestures/tap.dart';
 
+import 'SizeHolder.dart';
+
 class DynamicBackground extends BaseWidget {
   final double _speed;
 
   SpriteComponent _bg;
   double _x;
 
-  Size _size;
-
   DynamicBackground(this._speed, String imgSrc) {
     _bg = SpriteComponent.fromSprite(0, 0, Sprite(imgSrc));
     _x = 0;
-    _size = Size(0, 0);
   }
   @override
   void onTapDown(TapDownDetails detail, Function fn) {
@@ -26,7 +25,7 @@ class DynamicBackground extends BaseWidget {
   @override
   void render(Canvas canvas) {
     canvas.save();
-    _bg.x = _x + _size.width * 0.995;
+    _bg.x = _x + screenSize.width * 0.995;
     _bg.render(canvas);
     canvas.restore();
 
@@ -37,15 +36,14 @@ class DynamicBackground extends BaseWidget {
   }
 
   @override
-  void resize(Size size) {
-    this._size = size;
-    _bg.width = size.width;
-    _bg.height = size.height;
+  void resize() {
+    _bg.width = screenSize.width;
+    _bg.height = screenSize.height;
   }
 
   @override
   void update(double t) {
-    _x -= t * _speed * _size.width;
-    if (_x < -_size.width * 0.995) _x += _size.width * 0.995;
+    _x -= t * _speed * screenSize.width;
+    if (_x < -screenSize.width * 0.995) _x += screenSize.width * 0.995;
   }
 }

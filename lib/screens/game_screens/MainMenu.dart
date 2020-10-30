@@ -26,10 +26,10 @@ class MainScreen extends BaseWidget {
   }
 
   @override
-  void resize(Size size) {
-    _background?.resize(size);
-    _startButton?.resize(size);
-    _logo?.resize(size);
+  void resize() {
+    _background?.resize();
+    _startButton?.resize();
+    _logo?.resize();
   }
 
   @override

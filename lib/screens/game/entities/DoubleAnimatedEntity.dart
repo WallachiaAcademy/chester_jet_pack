@@ -2,6 +2,7 @@ import 'dart:ui';
 
 import 'package:chesterjetpack/screens/game/entities/BaseEntity.dart';
 import 'package:chesterjetpack/screens/game/entities/EntityState.dart';
+import 'package:chesterjetpack/screens/utils/SizeHolder.dart';
 import 'package:flame/animation.dart';
 import 'package:flame/components/animation_component.dart';
 import 'package:flame/sprite.dart';
@@ -13,8 +14,8 @@ abstract class DoubleAnimatedEntity extends BaseEntity {
 
   EntityState _entityState;
 
-  Size size;
   double _x;
+  double _yRatio;
 
   DoubleAnimatedEntity(
     String firstAniPath,
@@ -23,6 +24,7 @@ abstract class DoubleAnimatedEntity extends BaseEntity {
     String secondAniPath,
     int secondAniCount,
     double secondAniSpeed,
+    List<double> args,
   ) {
     List<Sprite> _sprites = List<Sprite>();
 
@@ -41,6 +43,7 @@ abstract class DoubleAnimatedEntity extends BaseEntity {
 
     _entityState = EntityState.Normal;
     _x = 0;
+    _yRatio = args[0];
   }
 
   @mustCallSuper
@@ -65,34 +68,30 @@ abstract class DoubleAnimatedEntity extends BaseEntity {
   }
 
   @mustCallSuper
-  void superResize(
-    Size size, {
+  void superResize({
     double fWR = 0,
     double fHR = 0,
     double sWR = 0,
     double sHR = 0,
-    double yR = 0,
   }) {
-    this.size = size;
+    _first.width = screenSize.width * fWR;
+    _first.height = screenSize.height * fHR;
+    _first.y = screenSize.height * _yRatio - _first.height / 2;
 
-    _first.width = size.width * fWR;
-    _first.height = size.height * fHR;
-    _first.y = size.height * yR - _first.height / 2;
+    _second.width = screenSize.width * sWR;
+    _second.height = screenSize.height * sHR;
+    _second.y = screenSize.height * _yRatio - _second.height / 2;
 
-    _second.width = size.width * sWR;
-    _second.height = size.height * sHR;
-    _second.y = size.height * yR - _second.height / 2;
-
-    _x = size.width + _first.width;
+    _x = screenSize.width + _first.width;
   }
 
   @mustCallSuper
   void updateSuper(double t, {double normalFact = 2, double dyingFactor = 4}) {
     if (_entityState == EntityState.Normal) {
-      _x -= t * size.width / normalFact;
+      _x -= t * screenSize.width / normalFact;
       _first.update(t);
     } else {
-      _x -= t * size.width / dyingFactor;
+      _x -= t * screenSize.width / dyingFactor;
       _second.update(t);
       if (_second.animation.done() || _x < 0) {
         _second.animation.reversed(); // safety measure

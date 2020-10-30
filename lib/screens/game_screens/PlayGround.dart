@@ -39,12 +39,12 @@ class PlayGround extends BaseWidget {
   }
 
   @override
-  void resize(Size size) {
-    _bg.resize(size);
-    _topBorder.resize(size);
-    _botBorder.resize(size);
-    _player.resize(size);
-    storyHandler.resize(size);
+  void resize() {
+    _bg.resize();
+    _topBorder.resize();
+    _botBorder.resize();
+    _player.resize();
+    storyHandler.resize();
   }
 
   @override

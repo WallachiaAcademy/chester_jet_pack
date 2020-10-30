@@ -1,5 +1,6 @@
 import 'dart:ui';
 
+import 'package:chesterjetpack/screens/utils/SizeHolder.dart';
 import 'package:flame/animation.dart';
 import 'package:flame/components/animation_component.dart';
 import 'package:flame/sprite.dart';
@@ -14,7 +15,6 @@ class Player extends BaseWidget {
   double _speed;
   double _maxSpeed;
   double _y;
-  Size _size;
 
   Player() {
     List<Sprite> sprites =
@@ -29,7 +29,6 @@ class Player extends BaseWidget {
     _speed = 0;
     _maxSpeed = 0;
     _y = 0;
-    _size = Size(0, 0);
   }
   @override
   void onTapDown(TapDownDetails detail, Function fn) {
@@ -51,18 +50,17 @@ class Player extends BaseWidget {
   }
 
   @override
-  void resize(Size size) {
-    _size = size;
-    _y = (size.height - size.height * 0.25) / 2;
-    _maxSpeed = size.height * 0.005;
+  void resize() {
+    _y = (screenSize.height - screenSize.height * 0.25) / 2;
+    _maxSpeed = screenSize.height * 0.005;
 
-    _smoke.x = _size.width * 0.005;
-    _smoke.width = size.width * 0.15;
-    _smoke.height = size.height * 0.25;
+    _smoke.x = screenSize.width * 0.005;
+    _smoke.width = screenSize.width * 0.15;
+    _smoke.height = screenSize.height * 0.25;
 
-    _player.x = _size.width * 0.1;
-    _player.width = size.width * 0.15;
-    _player.height = size.height * 0.25;
+    _player.x = screenSize.width * 0.1;
+    _player.width = screenSize.width * 0.15;
+    _player.height = screenSize.height * 0.25;
   }
 
   @override
@@ -72,7 +70,8 @@ class Player extends BaseWidget {
     _y += _speed;
 
     // TODO: to be removed later
-    if (_y > _size.height - _player.height) _y = _size.height - _player.height;
+    if (_y > screenSize.height - _player.height)
+      _y = screenSize.height - _player.height;
     if (_y < 0) _y = 0;
 
     _player.update(t);

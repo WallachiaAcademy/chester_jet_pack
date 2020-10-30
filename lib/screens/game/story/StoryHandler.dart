@@ -16,7 +16,6 @@ class StoryHandler {
   Queue<Step> _steps;
 
   double _time = 0;
-  Size _size = Size(0, 0);
 
   StoryHandler() {
     entities = List<BaseEntity>();
@@ -25,14 +24,74 @@ class StoryHandler {
 
   void _populateStory() {
     _steps.clear();
-    _steps.addLast(Step(1, EntityType.Rocket, null));
-    _steps.addLast(Step(2, EntityType.Rocket, null));
-    _steps.addLast(Step(3, EntityType.Rocket, null));
-    _steps.addLast(Step(4, EntityType.Bomb, [0.7]));
+    _steps.addLast(Step(1, EntityType.Rocket, [0.3]));
+    _steps.addLast(Step(1, EntityType.Rocket, [0.4]));
+    _steps.addLast(Step(1, EntityType.Rocket, [0.5]));
+    _steps.addLast(Step(1, EntityType.Rocket, [0.6]));
+    _steps.addLast(Step(1, EntityType.Rocket, [0.7]));
 
-    _steps.addLast(Step(10, EntityType.Rocket, null));
-    _steps.addLast(Step(11, EntityType.Rocket, null));
-    _steps.addLast(Step(12, EntityType.Rocket, null));
+    _steps.addLast(Step(1.2, EntityType.Rocket, [0.5]));
+    _steps.addLast(Step(1.4, EntityType.Rocket, [0.5]));
+
+    _steps.addLast(Step(1.6, EntityType.Rocket, [0.3]));
+    _steps.addLast(Step(1.6, EntityType.Rocket, [0.4]));
+    _steps.addLast(Step(1.6, EntityType.Rocket, [0.5]));
+    _steps.addLast(Step(1.6, EntityType.Rocket, [0.6]));
+    _steps.addLast(Step(1.6, EntityType.Rocket, [0.7]));
+
+    _steps.addLast(Step(2, EntityType.Rocket, [0.3]));
+    _steps.addLast(Step(2, EntityType.Rocket, [0.4]));
+    _steps.addLast(Step(2, EntityType.Rocket, [0.5]));
+    _steps.addLast(Step(2, EntityType.Rocket, [0.6]));
+    _steps.addLast(Step(2, EntityType.Rocket, [0.7]));
+
+    _steps.addLast(Step(2.2, EntityType.Rocket, [0.3]));
+    _steps.addLast(Step(2.2, EntityType.Rocket, [0.5]));
+    _steps.addLast(Step(2.2, EntityType.Rocket, [0.7]));
+
+    _steps.addLast(Step(2.4, EntityType.Rocket, [0.3]));
+    _steps.addLast(Step(2.4, EntityType.Rocket, [0.5]));
+    _steps.addLast(Step(2.4, EntityType.Rocket, [0.7]));
+
+    _steps.addLast(Step(2.8, EntityType.Rocket, [0.3]));
+    _steps.addLast(Step(2.8, EntityType.Rocket, [0.4]));
+    _steps.addLast(Step(2.8, EntityType.Rocket, [0.5]));
+    _steps.addLast(Step(2.8, EntityType.Rocket, [0.6]));
+    _steps.addLast(Step(2.8, EntityType.Rocket, [0.7]));
+
+    _steps.addLast(Step(3, EntityType.Rocket, [0.7]));
+    _steps.addLast(Step(3.2, EntityType.Rocket, [0.7]));
+
+    _steps.addLast(Step(3.6, EntityType.Rocket, [0.3]));
+    _steps.addLast(Step(3.6, EntityType.Rocket, [0.4]));
+    _steps.addLast(Step(3.6, EntityType.Rocket, [0.5]));
+    _steps.addLast(Step(3.6, EntityType.Rocket, [0.6]));
+    _steps.addLast(Step(3.6, EntityType.Rocket, [0.7]));
+
+    _steps.addLast(Step(3.8, EntityType.Rocket, [0.7]));
+    _steps.addLast(Step(4, EntityType.Rocket, [0.7]));
+
+    _steps.addLast(Step(4.4, EntityType.Rocket, [0.3]));
+    _steps.addLast(Step(4.4, EntityType.Rocket, [0.4]));
+    _steps.addLast(Step(4.4, EntityType.Rocket, [0.5]));
+    _steps.addLast(Step(4.4, EntityType.Rocket, [0.6]));
+    _steps.addLast(Step(4.4, EntityType.Rocket, [0.7]));
+
+    _steps.addLast(Step(4.6, EntityType.Rocket, [0.3]));
+    _steps.addLast(Step(4.6, EntityType.Rocket, [0.7]));
+
+    _steps.addLast(Step(4.8, EntityType.Rocket, [0.3]));
+    _steps.addLast(Step(4.8, EntityType.Rocket, [0.7]));
+
+    _steps.addLast(Step(5, EntityType.Rocket, [0.3]));
+    _steps.addLast(Step(5, EntityType.Rocket, [0.4]));
+    _steps.addLast(Step(5, EntityType.Rocket, [0.5]));
+    _steps.addLast(Step(5, EntityType.Rocket, [0.6]));
+    _steps.addLast(Step(5, EntityType.Rocket, [0.7]));
+
+    _steps.addLast(Step(5.4, EntityType.Bomb, [0.7]));
+    _steps.addLast(Step(5.6, EntityType.Bomb, [0.7]));
+    _steps.addLast(Step(5.8, EntityType.Bomb, [0.7]));
   }
 
   void reset() {
@@ -47,9 +106,8 @@ class StoryHandler {
     for (var e in entities) e.render(canvas);
   }
 
-  void resize(Size size) {
-    _size = size;
-    for (var e in entities) e.resize(size);
+  void resize() {
+    for (var e in entities) e.resize();
   }
 
   void update(double t) {
@@ -75,7 +133,7 @@ class StoryHandler {
 
       switch (curStep.entityType) {
         case EntityType.Rocket:
-          _spawnRocket();
+          _spawnRocket(curStep.args);
           break;
         case EntityType.Bomb:
           _spawnBomb(curStep.args);
@@ -89,15 +147,15 @@ class StoryHandler {
     }
   }
 
-  void _spawnRocket() {
-    Rocket r = Rocket();
-    r.resize(_size);
+  void _spawnRocket(List<double> args) {
+    Rocket r = Rocket(args);
+    r.resize();
     entities.add(r);
   }
 
   void _spawnBomb(List<double> args) {
     Bomb b = Bomb(args);
-    b.resize(_size);
+    b.resize();
     entities.add(b);
   }
 }

@@ -3,7 +3,7 @@ import 'dart:ui';
 import 'package:flutter/cupertino.dart';
 
 abstract class BaseWidget {
-  void resize(Size size);
+  void resize();
 
   void render(Canvas canvas);
 

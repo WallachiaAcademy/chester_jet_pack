@@ -4,7 +4,6 @@ import 'package:chesterjetpack/screens/game/entities/DoubleAnimatedEntity.dart';
 import 'package:flutter/src/gestures/tap.dart';
 
 class Bomb extends DoubleAnimatedEntity {
-  double _yRatio;
   Bomb(List<double> args)
       : super(
           'enemies/bomb/bomb',
@@ -13,9 +12,8 @@ class Bomb extends DoubleAnimatedEntity {
           'common/',
           5,
           0.2,
-        ) {
-    _yRatio = args[0];
-  }
+          args,
+        );
 
   @override
   void hit() {
@@ -43,9 +41,8 @@ class Bomb extends DoubleAnimatedEntity {
   }
 
   @override
-  void resize(Size size) {
-    super.superResize(size,
-        fWR: 0.08, fHR: 0.1, sWR: 0.14, sHR: 0.24, yR: _yRatio);
+  void resize() {
+    super.superResize(fWR: 0.08, fHR: 0.1, sWR: 0.14, sHR: 0.24);
   }
 
   @override

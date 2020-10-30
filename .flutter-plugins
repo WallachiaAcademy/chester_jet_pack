@@ -1,5 +1,6 @@
 # This is a generated file; do not edit or check into version control.
 audioplayers=D:\\Tools\\flutter\\.pub-cache\\hosted\\pub.dartlang.org\\audioplayers-0.15.1\\
-path_provider=D:\\Tools\\flutter\\.pub-cache\\hosted\\pub.dartlang.org\\path_provider-1.6.14\\
+path_provider=D:\\Tools\\flutter\\.pub-cache\\hosted\\pub.dartlang.org\\path_provider-1.6.22\\
 path_provider_linux=D:\\Tools\\flutter\\.pub-cache\\hosted\\pub.dartlang.org\\path_provider_linux-0.0.1+2\\
-path_provider_macos=D:\\Tools\\flutter\\.pub-cache\\hosted\\pub.dartlang.org\\path_provider_macos-0.0.4+3\\
+path_provider_macos=D:\\Tools\\flutter\\.pub-cache\\hosted\\pub.dartlang.org\\path_provider_macos-0.0.4+4\\
+path_provider_windows=D:\\Tools\\flutter\\.pub-cache\\hosted\\pub.dartlang.org\\path_provider_windows-0.0.4+1\\
