@@ -1,6 +1,7 @@
 import 'dart:ui';
 
 import 'package:chesterjetpack/screens/game/entities/DoubleAnimatedEntity.dart';
+import 'package:chesterjetpack/screens/game/player/BasePlayer.dart';
 import 'package:flutter/src/gestures/tap.dart';
 
 class Bomb extends DoubleAnimatedEntity {
@@ -16,8 +17,9 @@ class Bomb extends DoubleAnimatedEntity {
         );
 
   @override
-  void hit() {
-    return super.hitSuper();
+  void hit(BasePlayer player) {
+    super.hitSuper();
+    player.hit();
   }
 
   @override

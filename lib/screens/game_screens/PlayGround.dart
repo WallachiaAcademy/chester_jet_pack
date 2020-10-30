@@ -1,7 +1,7 @@
 import 'dart:ui';
 
 import 'package:chesterjetpack/screens/BaseWidget.dart';
-import 'package:chesterjetpack/screens/game/Player.dart';
+import 'package:chesterjetpack/screens/game/player/Player.dart';
 import 'package:chesterjetpack/screens/game/story/StoryHandler.dart';
 import 'package:chesterjetpack/screens/utils/DynamicBackground.dart';
 import 'package:chesterjetpack/screens/utils/RepetitiveAsset.dart';

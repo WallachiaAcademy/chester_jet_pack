@@ -25,11 +25,20 @@ class StoryHandler {
 
   void _populateStory() {
     _steps.clear();
-    _steps.addLast(Step(4, EntityType.ElectricObstacle, [0.9]));
-    _steps.addLast(Step(6, EntityType.ElectricObstacle, [0.9]));
-    _steps.addLast(Step(8, EntityType.ElectricObstacle, [0.9]));
-    _steps.addLast(Step(10, EntityType.ElectricObstacle, [0.9]));
-    _steps.addLast(Step(12, EntityType.ElectricObstacle, [0.9]));
+    _steps.addLast(Step(3, EntityType.ElectricObstacle, [0.9]));
+    _steps.addLast(Step(3.25, EntityType.Bomb, [0.8]));
+
+    _steps.addLast(Step(4, EntityType.Rocket, [0.3]));
+
+    _steps.addLast(Step(5, EntityType.ElectricObstacle, [0.9]));
+    _steps.addLast(Step(5.25, EntityType.Bomb, [0.8]));
+
+    _steps.addLast(Step(6, EntityType.Rocket, [0.3]));
+
+    _steps.addLast(Step(7, EntityType.ElectricObstacle, [0.9]));
+    _steps.addLast(Step(7.25, EntityType.Bomb, [0.8]));
+
+    _steps.addLast(Step(8, EntityType.Rocket, [0.3]));
   }
 
   void reset() {

@@ -6,15 +6,19 @@ import 'package:flame/components/animation_component.dart';
 import 'package:flame/sprite.dart';
 import 'package:flutter/src/gestures/tap.dart';
 
-import '../BaseWidget.dart';
-import 'story/StoryHandler.dart';
+import '../story/StoryHandler.dart';
+import 'BasePlayer.dart';
 
-class Player extends BaseWidget {
+class Player extends BasePlayer {
   AnimationComponent _player;
   AnimationComponent _smoke;
   double _speed;
   double _maxSpeed;
   double _y;
+
+  bool _renderPlayer;
+  bool _hitInProgress;
+  DateTime _hitTime;
 
   Player() {
     List<Sprite> sprites =
@@ -29,6 +33,9 @@ class Player extends BaseWidget {
     _speed = 0;
     _maxSpeed = 0;
     _y = 0;
+
+    _hitInProgress = false;
+    _renderPlayer = true;
   }
   @override
   void onTapDown(TapDownDetails detail, Function fn) {
@@ -37,16 +44,18 @@ class Player extends BaseWidget {
 
   @override
   void render(Canvas canvas) {
-    if (_speed < _maxSpeed) {
+    if (_renderPlayer) {
+      if (_speed < _maxSpeed) {
+        canvas.save();
+        _smoke.y = _y + _player.height * 0.5;
+        _smoke.render(canvas);
+        canvas.restore();
+      }
       canvas.save();
-      _smoke.y = _y + _player.height * 0.5;
-      _smoke.render(canvas);
+      _player.y = _y;
+      _player.render(canvas);
       canvas.restore();
     }
-    canvas.save();
-    _player.y = _y;
-    _player.render(canvas);
-    canvas.restore();
   }
 
   @override
@@ -65,21 +74,54 @@ class Player extends BaseWidget {
 
   @override
   void update(double t) {
-    _speed += t * _maxSpeed * 3;
-    if (_speed > _maxSpeed) _speed = _maxSpeed;
-    _y += _speed;
-
-    // TODO: to be removed later
-    if (_y > screenSize.height - _player.height)
-      _y = screenSize.height - _player.height;
-    if (_y < 0) _y = 0;
+    _updateSpeed(t);
+    _updatePosition();
 
     _player.update(t);
     _smoke.update(t);
 
+    _checkIfHit();
+  }
+
+  void _updatePosition() {
+    _y += _speed;
+    if (_y > screenSize.height - _player.height)
+      _y = screenSize.height - _player.height;
+    if (_y < 0) _y = 0;
+  }
+
+  void _updateSpeed(double t) {
+    _speed += t * _maxSpeed * 3;
+    if (_speed > _maxSpeed) _speed = _maxSpeed;
+  }
+
+  void _checkIfHit() {
     var rect = _player.toRect();
     for (var e in storyHandler.entities) {
-      if (e.overlaps(rect)) e.hit();
+      if (e.overlaps(rect)) e.hit(this);
+    }
+
+    if (_hitInProgress) {
+      int hitToggle =
+          (DateTime.now().difference(_hitTime).inMilliseconds / 100).toInt();
+      if (hitToggle > 10) {
+        _hitInProgress = false;
+        _renderPlayer = true;
+      } else {
+        if (hitToggle % 2 == 0) {
+          _renderPlayer = false;
+        } else {
+          _renderPlayer = true;
+        }
+      }
+    }
+  }
+
+  @override
+  void hit() {
+    if (!_hitInProgress) {
+      _hitInProgress = true;
+      _hitTime = DateTime.now();
     }
   }
 }

@@ -2,6 +2,7 @@ import 'dart:ui';
 
 import 'package:chesterjetpack/screens/game/AssetsSizes.dart';
 import 'package:chesterjetpack/screens/game/entities/AnimatedEntity.dart';
+import 'package:chesterjetpack/screens/game/player/BasePlayer.dart';
 import 'package:flutter/src/gestures/tap.dart';
 
 class ElectricObstacle extends AnimatedEntity {
@@ -14,8 +15,8 @@ class ElectricObstacle extends AnimatedEntity {
         );
 
   @override
-  void hit() {
-    // TODO: hit back the player
+  void hit(BasePlayer player) {
+    player.hit();
   }
 
   @override
