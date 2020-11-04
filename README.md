@@ -10,8 +10,8 @@ Even if you are not a software engineer you can still use this series as a start
 
 Chester Jet Pack is a game similar to Flappy Bird.
 
-Link to the youtube playlist: https://www.youtube.com/watch?v=XfZG-SKYE3Y&list=PLed3DrfS7NflAQC4a6aoesqobHsO1BXoT&index=1
+#### Link to the youtube playlist: https://www.youtube.com/watch?v=XfZG-SKYE3Y&list=PLed3DrfS7NflAQC4a6aoesqobHsO1BXoT&index=1
 
-Facebook: https://www.facebook.com/Wallachia.Academy
-Instagram: https://www.instagram.com/Wallachia.Academy
+#### Facebook: https://www.facebook.com/Wallachia.Academy
+#### Instagram: https://www.instagram.com/Wallachia.Academy
 
