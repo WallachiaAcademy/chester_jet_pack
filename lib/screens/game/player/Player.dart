@@ -1,5 +1,6 @@
 import 'dart:ui';
 
+import 'package:chesterjetpack/screens/game/player/LifeTracker.dart';
 import 'package:chesterjetpack/screens/utils/SizeHolder.dart';
 import 'package:flame/animation.dart';
 import 'package:flame/components/animation_component.dart';
@@ -20,6 +21,8 @@ class Player extends BasePlayer {
   bool _hitInProgress;
   DateTime _hitTime;
 
+  LifeTracker _lifeTracker;
+
   Player() {
     List<Sprite> sprites =
         [1, 2, 3, 4].map((e) => Sprite('player/${e}.png')).toList();
@@ -36,6 +39,8 @@ class Player extends BasePlayer {
 
     _hitInProgress = false;
     _renderPlayer = true;
+
+    _lifeTracker = LifeTracker();
   }
   @override
   void onTapDown(TapDownDetails detail, Function fn) {
@@ -56,6 +61,8 @@ class Player extends BasePlayer {
       _player.render(canvas);
       canvas.restore();
     }
+
+    _lifeTracker.render(canvas);
   }
 
   @override
@@ -70,6 +77,8 @@ class Player extends BasePlayer {
     _player.x = screenSize.width * 0.1;
     _player.width = screenSize.width * 0.15;
     _player.height = screenSize.height * 0.25;
+
+    _lifeTracker.resize();
   }
 
   @override
@@ -81,6 +90,7 @@ class Player extends BasePlayer {
     _smoke.update(t);
 
     _checkIfHit();
+    _lifeTracker.update(t);
   }
 
   void _updatePosition() {
@@ -122,6 +132,7 @@ class Player extends BasePlayer {
     if (!_hitInProgress) {
       _hitInProgress = true;
       _hitTime = DateTime.now();
+      _lifeTracker.decreaseHp();
     }
   }
 }

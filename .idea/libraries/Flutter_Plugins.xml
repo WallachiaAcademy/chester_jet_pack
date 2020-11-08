@@ -1,11 +1,11 @@
 <component name="libraryTable">
   <library name="Flutter Plugins" type="FlutterPluginsLibraryType">
     <CLASSES>
-      <root url="file://D:/Tools/flutter/.pub-cache/hosted/pub.dartlang.org/path_provider_linux-0.0.1+2" />
-      <root url="file://D:/Tools/flutter/.pub-cache/hosted/pub.dartlang.org/audioplayers-0.15.1" />
-      <root url="file://D:/Tools/flutter/.pub-cache/hosted/pub.dartlang.org/path_provider_macos-0.0.4+4" />
-      <root url="file://D:/Tools/flutter/.pub-cache/hosted/pub.dartlang.org/path_provider_windows-0.0.4+1" />
-      <root url="file://D:/Tools/flutter/.pub-cache/hosted/pub.dartlang.org/path_provider-1.6.22" />
+      <root url="file://$PROJECT_DIR$/../../Tools/flutter/.pub-cache/hosted/pub.dartlang.org/path_provider-1.6.24" />
+      <root url="file://$PROJECT_DIR$/../../Tools/flutter/.pub-cache/hosted/pub.dartlang.org/path_provider_linux-0.0.1+2" />
+      <root url="file://$PROJECT_DIR$/../../Tools/flutter/.pub-cache/hosted/pub.dartlang.org/audioplayers-0.15.1" />
+      <root url="file://$PROJECT_DIR$/../../Tools/flutter/.pub-cache/hosted/pub.dartlang.org/path_provider_macos-0.0.4+6" />
+      <root url="file://$PROJECT_DIR$/../../Tools/flutter/.pub-cache/hosted/pub.dartlang.org/path_provider_windows-0.0.4+3" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />
