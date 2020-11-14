@@ -51,7 +51,7 @@ abstract class AnimatedEntity extends BaseEntity {
   }
 
   @mustCallSuper
-  void superResize({
+  void resizeSuper({
     double wR = 0,
     double hR = 0,
   }) {

@@ -5,18 +5,18 @@ import 'package:chesterjetpack/screens/game/entities/AnimatedEntity.dart';
 import 'package:chesterjetpack/screens/game/player/BasePlayer.dart';
 import 'package:flutter/src/gestures/tap.dart';
 
-class BonusHp extends AnimatedEntity {
-  BonusHp(List<double> args) : super('rewards/hp', 2, 0.5, args);
+class Coin extends AnimatedEntity {
+  Coin(List<double> args) : super('rewards/coin', 6, 0.1, args);
 
   @override
   void hit(BasePlayer player) {
-    player.increaseHp();
-    super.die();
+    player.collectCoin();
+    die();
   }
 
   @override
   bool isDead() {
-    return super.isDeadSuper();
+    return isDeadSuper();
   }
 
   @override
@@ -26,21 +26,21 @@ class BonusHp extends AnimatedEntity {
 
   @override
   bool overlaps(Rect rect) {
-    return super.overlapsSuper(rect);
+    return overlapsSuper(rect);
   }
 
   @override
   void render(Canvas canvas) {
-    super.renderSuper(canvas);
+    renderSuper(canvas);
   }
 
   @override
   void resize() {
-    super.resizeSuper(wR: kBonusHpWidthRatio, hR: kBonusHpHeightRatio);
+    resizeSuper(wR: kCoinWidthRatio, hR: kCoinHeightRatio);
   }
 
   @override
   void update(double t) {
-    super.updateSuper(t);
+    updateSuper(t, normalFact: kCoinSpeed);
   }
 }

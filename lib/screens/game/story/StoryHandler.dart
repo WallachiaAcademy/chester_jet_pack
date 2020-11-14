@@ -5,6 +5,7 @@ import 'package:chesterjetpack/screens/game/enemies/Bomb.dart';
 import 'package:chesterjetpack/screens/game/enemies/ElectricObstacle.dart';
 import 'package:chesterjetpack/screens/game/entities/EntityType.dart';
 import 'package:chesterjetpack/screens/game/rewards/BonusHp.dart';
+import 'package:chesterjetpack/screens/game/rewards/Coin.dart';
 import 'package:flutter/src/gestures/tap.dart';
 
 import '../enemies/Rocket.dart';
@@ -26,6 +27,12 @@ class StoryHandler {
 
   void _populateStory() {
     _steps.clear();
+
+    _steps.addLast(Step(1, EntityType.Coin, [0.5]));
+    _steps.addLast(Step(1.4, EntityType.Coin, [0.4]));
+    _steps.addLast(Step(1.8, EntityType.Coin, [0.3]));
+    _steps.addLast(Step(2.2, EntityType.Coin, [0.4]));
+    _steps.addLast(Step(2.6, EntityType.Coin, [0.5]));
     _steps.addLast(Step(3, EntityType.ElectricObstacle, [0.9]));
     _steps.addLast(Step(3.25, EntityType.Bomb, [0.8]));
 
@@ -101,6 +108,9 @@ class StoryHandler {
         case EntityType.BonusHp:
           _spawnBonusHp(curStep.args);
           break;
+        case EntityType.Coin:
+          _spawnCoin(curStep.args);
+          break;
         default:
           throw new Exception("Unimplemented entity type " +
               curStep.entityType.toString() +
@@ -132,5 +142,11 @@ class StoryHandler {
     BonusHp _bhp = BonusHp(args);
     _bhp.resize();
     entities.add(_bhp);
+  }
+
+  void _spawnCoin(List<double> args) {
+    Coin _coin = Coin(args);
+    _coin.resize();
+    entities.add(_coin);
   }
 }

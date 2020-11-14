@@ -8,3 +8,7 @@ const double kHpYAlignment = 0.88;
 
 const double kBonusHpWidthRatio = 0.06;
 const double kBonusHpHeightRatio = 0.1;
+
+const double kCoinWidthRatio = 0.06;
+const double kCoinHeightRatio = 0.1;
+const double kCoinSpeed = 4;

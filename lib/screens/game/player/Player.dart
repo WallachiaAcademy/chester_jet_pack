@@ -140,4 +140,9 @@ class Player extends BasePlayer {
   void increaseHp() {
     _lifeTracker.increaseHp();
   }
+
+  @override
+  void collectCoin() {
+    //TODO: implement
+  }
 }

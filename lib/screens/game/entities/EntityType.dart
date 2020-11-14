@@ -3,4 +3,5 @@ enum EntityType {
   Bomb,
   ElectricObstacle,
   BonusHp,
+  Coin,
 }

@@ -42,7 +42,7 @@ class ElectricObstacle extends AnimatedEntity {
 
   @override
   void resize() {
-    super.superResize(wR: kElectricObstacleWR, hR: kElectricObstacleHR);
+    super.resizeSuper(wR: kElectricObstacleWR, hR: kElectricObstacleHR);
   }
 
   @override
