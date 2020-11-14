@@ -54,4 +54,8 @@ class LifeTracker extends BaseWidget {
   bool isDead() {
     return _lifeCount <= 0;
   }
+
+  void increaseHp() {
+    if (_lifeCount < 5) _lifeCount++;
+  }
 }

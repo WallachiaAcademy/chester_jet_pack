@@ -49,6 +49,7 @@ flutter:
     - assets/images/enemies/electric_obstacle/
     - assets/images/common/
     - assets/images/enemies/bomb/
+    - assets/images/rewards/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

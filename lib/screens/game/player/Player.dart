@@ -135,4 +135,9 @@ class Player extends BasePlayer {
       _lifeTracker.decreaseHp();
     }
   }
+
+  @override
+  void increaseHp() {
+    _lifeTracker.increaseHp();
+  }
 }

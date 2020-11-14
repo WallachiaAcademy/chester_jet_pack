@@ -1,23 +1,17 @@
 import 'dart:ui';
 
+import 'package:chesterjetpack/screens/game/EntitiesSizes.dart';
 import 'package:chesterjetpack/screens/game/entities/AnimatedEntity.dart';
 import 'package:chesterjetpack/screens/game/player/BasePlayer.dart';
 import 'package:flutter/src/gestures/tap.dart';
 
-import '../EntitiesSizes.dart';
-
-class ElectricObstacle extends AnimatedEntity {
-  ElectricObstacle(List<double> args)
-      : super(
-          'enemies/electric_obstacle/',
-          4,
-          0.2,
-          args,
-        );
+class BonusHp extends AnimatedEntity {
+  BonusHp(List<double> args) : super('rewards/hp', 2, 0.5, args);
 
   @override
   void hit(BasePlayer player) {
-    player.hit();
+    player.increaseHp();
+    super.die();
   }
 
   @override
@@ -42,7 +36,7 @@ class ElectricObstacle extends AnimatedEntity {
 
   @override
   void resize() {
-    super.superResize(wR: kElectricObstacleWR, hR: kElectricObstacleHR);
+    super.superResize(wR: kBonusHpWidthRatio, hR: kBonusHpHeightRatio);
   }
 
   @override

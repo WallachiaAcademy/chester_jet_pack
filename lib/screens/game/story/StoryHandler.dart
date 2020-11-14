@@ -4,6 +4,7 @@ import 'dart:ui';
 import 'package:chesterjetpack/screens/game/enemies/Bomb.dart';
 import 'package:chesterjetpack/screens/game/enemies/ElectricObstacle.dart';
 import 'package:chesterjetpack/screens/game/entities/EntityType.dart';
+import 'package:chesterjetpack/screens/game/rewards/BonusHp.dart';
 import 'package:flutter/src/gestures/tap.dart';
 
 import '../enemies/Rocket.dart';
@@ -29,6 +30,8 @@ class StoryHandler {
     _steps.addLast(Step(3.25, EntityType.Bomb, [0.8]));
 
     _steps.addLast(Step(4, EntityType.Rocket, [0.3]));
+    _steps.addLast(Step(4.25, EntityType.Rocket, [0.3]));
+    _steps.addLast(Step(4.5, EntityType.Rocket, [0.3]));
 
     _steps.addLast(Step(5, EntityType.ElectricObstacle, [0.9]));
     _steps.addLast(Step(5.25, EntityType.Bomb, [0.8]));
@@ -39,6 +42,13 @@ class StoryHandler {
     _steps.addLast(Step(7.25, EntityType.Bomb, [0.8]));
 
     _steps.addLast(Step(8, EntityType.Rocket, [0.3]));
+
+    _steps.addLast(Step(9, EntityType.BonusHp, [0.3]));
+    _steps.addLast(Step(10, EntityType.BonusHp, [0.3]));
+    _steps.addLast(Step(11, EntityType.BonusHp, [0.3]));
+    _steps.addLast(Step(12, EntityType.BonusHp, [0.3]));
+    _steps.addLast(Step(13, EntityType.BonusHp, [0.3]));
+    _steps.addLast(Step(14, EntityType.BonusHp, [0.3]));
   }
 
   void reset() {
@@ -88,6 +98,9 @@ class StoryHandler {
         case EntityType.ElectricObstacle:
           _spawnEletricObstacle(curStep.args);
           break;
+        case EntityType.BonusHp:
+          _spawnBonusHp(curStep.args);
+          break;
         default:
           throw new Exception("Unimplemented entity type " +
               curStep.entityType.toString() +
@@ -113,5 +126,11 @@ class StoryHandler {
     ElectricObstacle _eo = ElectricObstacle(args);
     _eo.resize();
     entities.add(_eo);
+  }
+
+  void _spawnBonusHp(List<double> args) {
+    BonusHp _bhp = BonusHp(args);
+    _bhp.resize();
+    entities.add(_bhp);
   }
 }
