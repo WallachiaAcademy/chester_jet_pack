@@ -33,6 +33,7 @@ class StoryHandler {
     _steps.addLast(Step(1.8, EntityType.Coin, [0.3]));
     _steps.addLast(Step(2.2, EntityType.Coin, [0.4]));
     _steps.addLast(Step(2.6, EntityType.Coin, [0.5]));
+
     _steps.addLast(Step(3, EntityType.ElectricObstacle, [0.9]));
     _steps.addLast(Step(3.25, EntityType.Bomb, [0.8]));
 

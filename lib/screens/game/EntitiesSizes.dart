@@ -12,3 +12,8 @@ const double kBonusHpHeightRatio = 0.1;
 const double kCoinWidthRatio = 0.06;
 const double kCoinHeightRatio = 0.1;
 const double kCoinSpeed = 4;
+const double kCoinReward = 100;
+
+const double kScoreFontRatio = 0.06;
+const double kScoreXRatio = 0.99;
+const double kScoreYRatio = 0.02;

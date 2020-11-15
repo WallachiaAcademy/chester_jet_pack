@@ -1,12 +1,14 @@
 import 'dart:ui';
 
 import 'package:chesterjetpack/screens/game/player/LifeTracker.dart';
+import 'package:chesterjetpack/screens/game/player/ScoreHolder.dart';
 import 'package:chesterjetpack/screens/utils/SizeHolder.dart';
 import 'package:flame/animation.dart';
 import 'package:flame/components/animation_component.dart';
 import 'package:flame/sprite.dart';
 import 'package:flutter/src/gestures/tap.dart';
 
+import '../EntitiesSizes.dart';
 import '../story/StoryHandler.dart';
 import 'BasePlayer.dart';
 
@@ -22,6 +24,7 @@ class Player extends BasePlayer {
   DateTime _hitTime;
 
   LifeTracker _lifeTracker;
+  ScoreHolder _scoreHolder;
 
   Player() {
     List<Sprite> sprites =
@@ -41,6 +44,7 @@ class Player extends BasePlayer {
     _renderPlayer = true;
 
     _lifeTracker = LifeTracker();
+    _scoreHolder = ScoreHolder();
   }
   @override
   void onTapDown(TapDownDetails detail, Function fn) {
@@ -63,6 +67,7 @@ class Player extends BasePlayer {
     }
 
     _lifeTracker.render(canvas);
+    _scoreHolder.render(canvas);
   }
 
   @override
@@ -79,6 +84,7 @@ class Player extends BasePlayer {
     _player.height = screenSize.height * 0.25;
 
     _lifeTracker.resize();
+    _scoreHolder.resize();
   }
 
   @override
@@ -91,6 +97,7 @@ class Player extends BasePlayer {
 
     _checkIfHit();
     _lifeTracker.update(t);
+    _scoreHolder.update(t);
   }
 
   void _updatePosition() {
@@ -143,6 +150,6 @@ class Player extends BasePlayer {
 
   @override
   void collectCoin() {
-    //TODO: implement
+    _scoreHolder.increaseScore(kCoinReward);
   }
 }
