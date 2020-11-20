@@ -152,4 +152,9 @@ class Player extends BasePlayer {
   void collectCoin() {
     _scoreHolder.increaseScore(kCoinReward);
   }
+
+  @override
+  void pushBack(double x) {
+    // TODO: implement pushBack
+  }
 }

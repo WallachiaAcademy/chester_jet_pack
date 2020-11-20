@@ -4,4 +4,5 @@ enum EntityType {
   ElectricObstacle,
   BonusHp,
   Coin,
+  WoodBox,
 }

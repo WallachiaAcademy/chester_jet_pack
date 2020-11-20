@@ -6,6 +6,7 @@ import 'package:chesterjetpack/screens/game/enemies/ElectricObstacle.dart';
 import 'package:chesterjetpack/screens/game/entities/EntityType.dart';
 import 'package:chesterjetpack/screens/game/rewards/BonusHp.dart';
 import 'package:chesterjetpack/screens/game/rewards/Coin.dart';
+import 'package:chesterjetpack/screens/game/stage/WoodBox.dart';
 import 'package:flutter/src/gestures/tap.dart';
 
 import '../enemies/Rocket.dart';
@@ -28,35 +29,33 @@ class StoryHandler {
   void _populateStory() {
     _steps.clear();
 
-    _steps.addLast(Step(1, EntityType.Coin, [0.5]));
-    _steps.addLast(Step(1.4, EntityType.Coin, [0.4]));
-    _steps.addLast(Step(1.8, EntityType.Coin, [0.3]));
-    _steps.addLast(Step(2.2, EntityType.Coin, [0.4]));
-    _steps.addLast(Step(2.6, EntityType.Coin, [0.5]));
+    _steps.addLast(Step(4.4, EntityType.ElectricObstacle, [0.95]));
+    _steps.addLast(Step(4.4, EntityType.Coin, [0.83]));
+    _steps.addLast(Step(4.6, EntityType.Coin, [0.83]));
+    _steps.addLast(Step(4.8, EntityType.Coin, [0.83]));
 
-    _steps.addLast(Step(3, EntityType.ElectricObstacle, [0.9]));
-    _steps.addLast(Step(3.25, EntityType.Bomb, [0.8]));
+    _steps.addLast(Step(5, EntityType.WoodBox, [0.93]));
+    _steps.addLast(Step(5, EntityType.Coin, [0.73]));
 
-    _steps.addLast(Step(4, EntityType.Rocket, [0.3]));
-    _steps.addLast(Step(4.25, EntityType.Rocket, [0.3]));
-    _steps.addLast(Step(4.5, EntityType.Rocket, [0.3]));
+    _steps.addLast(Step(5.12, EntityType.WoodBox, [0.93]));
+    _steps.addLast(Step(5.12, EntityType.WoodBox, [0.83]));
+    _steps.addLast(Step(5.12, EntityType.Coin, [0.63]));
 
-    _steps.addLast(Step(5, EntityType.ElectricObstacle, [0.9]));
-    _steps.addLast(Step(5.25, EntityType.Bomb, [0.8]));
+    _steps.addLast(Step(5.24, EntityType.WoodBox, [0.93]));
+    _steps.addLast(Step(5.24, EntityType.WoodBox, [0.83]));
+    _steps.addLast(Step(5.24, EntityType.WoodBox, [0.73]));
+    _steps.addLast(Step(5.24, EntityType.Coin, [0.53]));
 
-    _steps.addLast(Step(6, EntityType.Rocket, [0.3]));
+    _steps.addLast(Step(5.36, EntityType.WoodBox, [0.93]));
+    _steps.addLast(Step(5.36, EntityType.WoodBox, [0.83]));
+    _steps.addLast(Step(5.36, EntityType.WoodBox, [0.73]));
+    _steps.addLast(Step(5.36, EntityType.Bomb, [0.63]));
+    _steps.addLast(Step(5.36, EntityType.Coin, [0.43]));
 
-    _steps.addLast(Step(7, EntityType.ElectricObstacle, [0.9]));
-    _steps.addLast(Step(7.25, EntityType.Bomb, [0.8]));
-
-    _steps.addLast(Step(8, EntityType.Rocket, [0.3]));
-
-    _steps.addLast(Step(9, EntityType.BonusHp, [0.3]));
-    _steps.addLast(Step(10, EntityType.BonusHp, [0.3]));
-    _steps.addLast(Step(11, EntityType.BonusHp, [0.3]));
-    _steps.addLast(Step(12, EntityType.BonusHp, [0.3]));
-    _steps.addLast(Step(13, EntityType.BonusHp, [0.3]));
-    _steps.addLast(Step(14, EntityType.BonusHp, [0.3]));
+    _steps.addLast(Step(5.48, EntityType.WoodBox, [0.93]));
+    _steps.addLast(Step(5.48, EntityType.WoodBox, [0.83]));
+    _steps.addLast(Step(5.48, EntityType.WoodBox, [0.73]));
+    _steps.addLast(Step(5.48, EntityType.Coin, [0.33]));
   }
 
   void reset() {
@@ -112,6 +111,9 @@ class StoryHandler {
         case EntityType.Coin:
           _spawnCoin(curStep.args);
           break;
+        case EntityType.WoodBox:
+          _appendEntity(WoodBox(curStep.args));
+          break;
         default:
           throw new Exception("Unimplemented entity type " +
               curStep.entityType.toString() +
@@ -149,5 +151,10 @@ class StoryHandler {
     Coin _coin = Coin(args);
     _coin.resize();
     entities.add(_coin);
+  }
+
+  void _appendEntity(BaseEntity _entity) {
+    _entity.resize();
+    entities.add(_entity);
   }
 }

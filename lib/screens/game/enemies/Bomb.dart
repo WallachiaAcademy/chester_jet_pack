@@ -1,5 +1,6 @@
 import 'dart:ui';
 
+import 'package:chesterjetpack/screens/game/EntitiesSizes.dart';
 import 'package:chesterjetpack/screens/game/entities/DoubleAnimatedEntity.dart';
 import 'package:chesterjetpack/screens/game/player/BasePlayer.dart';
 import 'package:flutter/src/gestures/tap.dart';
@@ -44,7 +45,12 @@ class Bomb extends DoubleAnimatedEntity {
 
   @override
   void resize() {
-    super.superResize(fWR: 0.08, fHR: 0.1, sWR: 0.14, sHR: 0.24);
+    super.superResize(
+      fWR: kBombWidthRatio,
+      fHR: kBombHeightRatio,
+      sWR: kBombExplosionWidthRatio,
+      sHR: kBombExplosionHeightRatio,
+    );
   }
 
   @override

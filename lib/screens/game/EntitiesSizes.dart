@@ -1,3 +1,8 @@
+const double kBombWidthRatio = 0.06;
+const double kBombHeightRatio = 0.1;
+const double kBombExplosionWidthRatio = 0.12;
+const double kBombExplosionHeightRatio = 0.24;
+
 const double kElectricObstacleWR = 0.2;
 const double kElectricObstacleHR = 0.05;
 
@@ -11,9 +16,12 @@ const double kBonusHpHeightRatio = 0.1;
 
 const double kCoinWidthRatio = 0.06;
 const double kCoinHeightRatio = 0.1;
-const double kCoinSpeed = 4;
+const double kCoinSpeed = 2;
 const double kCoinReward = 100;
 
 const double kScoreFontRatio = 0.06;
 const double kScoreXRatio = 0.99;
 const double kScoreYRatio = 0.02;
+
+const double kWoodBoxWidthRatio = 0.06;
+const double kWoodBoxHeightRatio = 0.1;

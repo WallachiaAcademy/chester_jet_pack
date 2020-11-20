@@ -5,5 +5,7 @@ abstract class BasePlayer extends BaseWidget {
 
   void increaseHp();
 
-  void collectCoin() {}
+  void collectCoin();
+
+  void pushBack(double x);
 }
