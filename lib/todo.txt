@@ -1,0 +1,23 @@
+Assets:
+- MetalBox
+- Pillar
+- Spikes
+
+Mechanisms
+- Player push back
+
+Screens:
+- Final Screen
+    - Best score
+    - Current score
+    - Play again button
+    - Main menu button
+
+Others:
+- Refine the image assets
+- Resize the assets to use 9x16 ratios
+- Implement a catchy story
+
+After release ideas:
+- Implement a settings screen
+- Implement sounds (e.g. collect coin, explosion) and music

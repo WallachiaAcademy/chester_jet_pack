@@ -5,4 +5,5 @@ enum EntityType {
   BonusHp,
   Coin,
   WoodBox,
+  MetalBox,
 }

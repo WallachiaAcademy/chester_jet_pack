@@ -6,6 +6,7 @@ import 'package:chesterjetpack/screens/game/enemies/ElectricObstacle.dart';
 import 'package:chesterjetpack/screens/game/entities/EntityType.dart';
 import 'package:chesterjetpack/screens/game/rewards/BonusHp.dart';
 import 'package:chesterjetpack/screens/game/rewards/Coin.dart';
+import 'package:chesterjetpack/screens/game/stage/MetalBox.dart';
 import 'package:chesterjetpack/screens/game/stage/WoodBox.dart';
 import 'package:flutter/src/gestures/tap.dart';
 
@@ -34,28 +35,28 @@ class StoryHandler {
     _steps.addLast(Step(4.6, EntityType.Coin, [0.83]));
     _steps.addLast(Step(4.8, EntityType.Coin, [0.83]));
 
-    _steps.addLast(Step(5, EntityType.WoodBox, [0.93]));
+    _steps.addLast(Step(5, EntityType.MetalBox, [0.93]));
     _steps.addLast(Step(5, EntityType.Coin, [0.73]));
 
-    _steps.addLast(Step(5.12, EntityType.WoodBox, [0.93]));
-    _steps.addLast(Step(5.12, EntityType.WoodBox, [0.83]));
-    _steps.addLast(Step(5.12, EntityType.Coin, [0.63]));
+    _steps.addLast(Step(5.18, EntityType.MetalBox, [0.93]));
+    _steps.addLast(Step(5.18, EntityType.MetalBox, [0.78]));
+    _steps.addLast(Step(5.18, EntityType.Coin, [0.63]));
 
-    _steps.addLast(Step(5.24, EntityType.WoodBox, [0.93]));
-    _steps.addLast(Step(5.24, EntityType.WoodBox, [0.83]));
-    _steps.addLast(Step(5.24, EntityType.WoodBox, [0.73]));
-    _steps.addLast(Step(5.24, EntityType.Coin, [0.53]));
+    _steps.addLast(Step(5.36, EntityType.MetalBox, [0.93]));
+    _steps.addLast(Step(5.36, EntityType.MetalBox, [0.78]));
+    _steps.addLast(Step(5.36, EntityType.MetalBox, [0.63]));
+    _steps.addLast(Step(5.36, EntityType.Coin, [0.53]));
 
-    _steps.addLast(Step(5.36, EntityType.WoodBox, [0.93]));
-    _steps.addLast(Step(5.36, EntityType.WoodBox, [0.83]));
-    _steps.addLast(Step(5.36, EntityType.WoodBox, [0.73]));
-    _steps.addLast(Step(5.36, EntityType.Bomb, [0.63]));
-    _steps.addLast(Step(5.36, EntityType.Coin, [0.43]));
+    _steps.addLast(Step(5.54, EntityType.MetalBox, [0.93]));
+    _steps.addLast(Step(5.54, EntityType.MetalBox, [0.78]));
+    _steps.addLast(Step(5.54, EntityType.MetalBox, [0.63]));
+    _steps.addLast(Step(5.54, EntityType.Bomb, [0.48]));
+    _steps.addLast(Step(5.54, EntityType.Coin, [0.43]));
 
-    _steps.addLast(Step(5.48, EntityType.WoodBox, [0.93]));
-    _steps.addLast(Step(5.48, EntityType.WoodBox, [0.83]));
-    _steps.addLast(Step(5.48, EntityType.WoodBox, [0.73]));
-    _steps.addLast(Step(5.48, EntityType.Coin, [0.33]));
+    _steps.addLast(Step(5.72, EntityType.MetalBox, [0.93]));
+    _steps.addLast(Step(5.72, EntityType.MetalBox, [0.78]));
+    _steps.addLast(Step(5.72, EntityType.MetalBox, [0.63]));
+    _steps.addLast(Step(5.72, EntityType.Coin, [0.33]));
   }
 
   void reset() {
@@ -91,28 +92,32 @@ class StoryHandler {
   }
 
   void _spawn() {
-    while (_steps.length > 0 && _time > _steps.first.spawnTime) {
+    while (_steps.length > 0 && _time >= _steps.first.spawnTime) {
       var curStep = _steps.first;
+      var deltaT = _time - curStep.spawnTime;
       _steps.removeFirst();
 
       switch (curStep.entityType) {
         case EntityType.Rocket:
-          _spawnRocket(curStep.args);
+          _appendEntity(Rocket(curStep.args), deltaT);
           break;
         case EntityType.Bomb:
-          _spawnBomb(curStep.args);
+          _appendEntity(Bomb(curStep.args), deltaT);
           break;
         case EntityType.ElectricObstacle:
-          _spawnEletricObstacle(curStep.args);
+          _appendEntity(ElectricObstacle(curStep.args), deltaT);
           break;
         case EntityType.BonusHp:
-          _spawnBonusHp(curStep.args);
+          _appendEntity(BonusHp(curStep.args), deltaT);
           break;
         case EntityType.Coin:
-          _spawnCoin(curStep.args);
+          _appendEntity(Coin(curStep.args), deltaT);
           break;
         case EntityType.WoodBox:
-          _appendEntity(WoodBox(curStep.args));
+          _appendEntity(WoodBox(curStep.args), deltaT);
+          break;
+        case EntityType.MetalBox:
+          _appendEntity(MetalBox(curStep.args), deltaT);
           break;
         default:
           throw new Exception("Unimplemented entity type " +
@@ -123,38 +128,9 @@ class StoryHandler {
     }
   }
 
-  void _spawnRocket(List<double> args) {
-    Rocket r = Rocket(args);
-    r.resize();
-    entities.add(r);
-  }
-
-  void _spawnBomb(List<double> args) {
-    Bomb b = Bomb(args);
-    b.resize();
-    entities.add(b);
-  }
-
-  void _spawnEletricObstacle(List<double> args) {
-    ElectricObstacle _eo = ElectricObstacle(args);
-    _eo.resize();
-    entities.add(_eo);
-  }
-
-  void _spawnBonusHp(List<double> args) {
-    BonusHp _bhp = BonusHp(args);
-    _bhp.resize();
-    entities.add(_bhp);
-  }
-
-  void _spawnCoin(List<double> args) {
-    Coin _coin = Coin(args);
-    _coin.resize();
-    entities.add(_coin);
-  }
-
-  void _appendEntity(BaseEntity _entity) {
+  void _appendEntity(BaseEntity _entity, double deltaT) {
     _entity.resize();
+    _entity.update(deltaT);
     entities.add(_entity);
   }
 }

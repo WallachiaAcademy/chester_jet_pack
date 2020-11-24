@@ -25,3 +25,6 @@ const double kScoreYRatio = 0.02;
 
 const double kWoodBoxWidthRatio = 0.06;
 const double kWoodBoxHeightRatio = 0.1;
+
+const double kMetalBoxWidthRatio = 0.09;
+const double kMetalBoxHeightRatio = 0.15;
