@@ -15,8 +15,6 @@ abstract class StaticBaseEntity extends BaseEntity {
 
   EntityState _state;
   StaticBaseEntity(String spriteSource, List<double> args) {
-    List<Sprite> _sprites = List<Sprite>();
-
     _component = SpriteComponent.fromSprite(0, 0, Sprite(spriteSource));
 
     _x = 0;

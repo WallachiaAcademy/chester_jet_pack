@@ -32,9 +32,9 @@ class PlayGround extends BaseWidget {
   @override
   void render(Canvas canvas) {
     _bg.render(canvas);
+    storyHandler.render(canvas);
     _topBorder.render(canvas);
     _botBorder.render(canvas);
-    storyHandler.render(canvas);
     _player.render(canvas);
   }
 

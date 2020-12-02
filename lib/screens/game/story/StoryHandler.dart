@@ -7,6 +7,7 @@ import 'package:chesterjetpack/screens/game/entities/EntityType.dart';
 import 'package:chesterjetpack/screens/game/rewards/BonusHp.dart';
 import 'package:chesterjetpack/screens/game/rewards/Coin.dart';
 import 'package:chesterjetpack/screens/game/stage/MetalBox.dart';
+import 'package:chesterjetpack/screens/game/stage/Pillar.dart';
 import 'package:chesterjetpack/screens/game/stage/Spikes.dart';
 import 'package:chesterjetpack/screens/game/stage/WoodBox.dart';
 import 'package:flutter/src/gestures/tap.dart';
@@ -31,34 +32,17 @@ class StoryHandler {
   void _populateStory() {
     _steps.clear();
 
-    _steps.addLast(Step(3, EntityType.Spikes, [0.96]));
-    _steps.addLast(Step(4.4, EntityType.ElectricObstacle, [0.95]));
-    _steps.addLast(Step(4.4, EntityType.Coin, [0.83]));
-    _steps.addLast(Step(4.6, EntityType.Coin, [0.83]));
-    _steps.addLast(Step(4.8, EntityType.Coin, [0.83]));
+    _steps.addLast(Step(3, EntityType.TopPillar, [0.15]));
+    _steps.addLast(Step(3, EntityType.BottomPillar, [0.95]));
+    _steps.addLast(Step(3.25, EntityType.Bomb, [0.55]));
 
-    _steps.addLast(Step(5, EntityType.MetalBox, [0.93]));
-    _steps.addLast(Step(5, EntityType.Coin, [0.73]));
+    _steps.addLast(Step(3.5, EntityType.TopPillar, [0.10]));
+    _steps.addLast(Step(3.5, EntityType.BottomPillar, [0.9]));
+    _steps.addLast(Step(3.75, EntityType.Bomb, [0.5]));
 
-    _steps.addLast(Step(5.18, EntityType.MetalBox, [0.93]));
-    _steps.addLast(Step(5.18, EntityType.MetalBox, [0.78]));
-    _steps.addLast(Step(5.18, EntityType.Coin, [0.63]));
-
-    _steps.addLast(Step(5.36, EntityType.MetalBox, [0.93]));
-    _steps.addLast(Step(5.36, EntityType.MetalBox, [0.78]));
-    _steps.addLast(Step(5.36, EntityType.MetalBox, [0.63]));
-    _steps.addLast(Step(5.36, EntityType.Coin, [0.53]));
-
-    _steps.addLast(Step(5.54, EntityType.MetalBox, [0.93]));
-    _steps.addLast(Step(5.54, EntityType.MetalBox, [0.78]));
-    _steps.addLast(Step(5.54, EntityType.MetalBox, [0.63]));
-    _steps.addLast(Step(5.54, EntityType.Bomb, [0.48]));
-    _steps.addLast(Step(5.54, EntityType.Coin, [0.43]));
-
-    _steps.addLast(Step(5.72, EntityType.MetalBox, [0.93]));
-    _steps.addLast(Step(5.72, EntityType.MetalBox, [0.78]));
-    _steps.addLast(Step(5.72, EntityType.MetalBox, [0.63]));
-    _steps.addLast(Step(5.72, EntityType.Coin, [0.33]));
+    _steps.addLast(Step(4, EntityType.TopPillar, [0.05]));
+    _steps.addLast(Step(4, EntityType.BottomPillar, [0.85]));
+    _steps.addLast(Step(4.25, EntityType.Bomb, [0.45]));
   }
 
   void reset() {
@@ -123,6 +107,12 @@ class StoryHandler {
           break;
         case EntityType.Spikes:
           _appendEntity(Spikes(curStep.args), deltaT);
+          break;
+        case EntityType.TopPillar:
+          _appendEntity(TopPillar(curStep.args), deltaT);
+          break;
+        case EntityType.BottomPillar:
+          _appendEntity(BottomPillar(curStep.args), deltaT);
           break;
         default:
           throw new Exception("Unimplemented entity type " +

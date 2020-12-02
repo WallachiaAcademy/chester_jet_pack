@@ -7,4 +7,6 @@ enum EntityType {
   WoodBox,
   MetalBox,
   Spikes,
+  TopPillar,
+  BottomPillar,
 }

@@ -31,3 +31,6 @@ const double kMetalBoxHeightRatio = 0.15;
 
 const double kSpikesWidthRatio = 0.3;
 const double kSpikesHeightRatio = 0.05;
+
+const double kPillarWidthRatio = 0.18;
+const double kPillarHeightRatio = 0.48;
