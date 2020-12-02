@@ -1,5 +1,4 @@
 Assets:
-- MetalBox
 - Pillar
 - Spikes
 

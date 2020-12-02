@@ -7,6 +7,7 @@ import 'package:chesterjetpack/screens/game/entities/EntityType.dart';
 import 'package:chesterjetpack/screens/game/rewards/BonusHp.dart';
 import 'package:chesterjetpack/screens/game/rewards/Coin.dart';
 import 'package:chesterjetpack/screens/game/stage/MetalBox.dart';
+import 'package:chesterjetpack/screens/game/stage/Spikes.dart';
 import 'package:chesterjetpack/screens/game/stage/WoodBox.dart';
 import 'package:flutter/src/gestures/tap.dart';
 
@@ -30,6 +31,7 @@ class StoryHandler {
   void _populateStory() {
     _steps.clear();
 
+    _steps.addLast(Step(3, EntityType.Spikes, [0.96]));
     _steps.addLast(Step(4.4, EntityType.ElectricObstacle, [0.95]));
     _steps.addLast(Step(4.4, EntityType.Coin, [0.83]));
     _steps.addLast(Step(4.6, EntityType.Coin, [0.83]));
@@ -118,6 +120,9 @@ class StoryHandler {
           break;
         case EntityType.MetalBox:
           _appendEntity(MetalBox(curStep.args), deltaT);
+          break;
+        case EntityType.Spikes:
+          _appendEntity(Spikes(curStep.args), deltaT);
           break;
         default:
           throw new Exception("Unimplemented entity type " +

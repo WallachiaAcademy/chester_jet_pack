@@ -28,3 +28,6 @@ const double kWoodBoxHeightRatio = 0.1;
 
 const double kMetalBoxWidthRatio = 0.09;
 const double kMetalBoxHeightRatio = 0.15;
+
+const double kSpikesWidthRatio = 0.3;
+const double kSpikesHeightRatio = 0.05;

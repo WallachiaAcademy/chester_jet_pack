@@ -6,4 +6,5 @@ enum EntityType {
   Coin,
   WoodBox,
   MetalBox,
+  Spikes,
 }
