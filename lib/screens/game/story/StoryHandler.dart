@@ -32,7 +32,7 @@ class StoryHandler {
   void _populateStory() {
     _steps.clear();
 
-    //_steps.addLast(Step(1.85, EntityType.Coin, [0.845]));
+    _steps.addLast(Step(1.85, EntityType.Coin, [0.845]));
 
     _steps.addLast(Step(2, EntityType.MetalBox, [0.82]));
     _steps.addLast(Step(2.03, EntityType.Coin, [0.685]));
