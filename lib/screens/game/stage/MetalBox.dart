@@ -10,7 +10,7 @@ class MetalBox extends StaticBaseEntity {
 
   @override
   void hit(BasePlayer player) {
-    player.pushBack(getX());
+    player.pushBack(getSurface());
   }
 
   @override

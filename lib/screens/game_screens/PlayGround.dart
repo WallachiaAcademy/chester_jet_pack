@@ -1,6 +1,7 @@
 import 'dart:ui';
 
 import 'package:chesterjetpack/screens/BaseWidget.dart';
+import 'package:chesterjetpack/screens/game/EntitiesSizes.dart';
 import 'package:chesterjetpack/screens/game/player/Player.dart';
 import 'package:chesterjetpack/screens/game/story/StoryHandler.dart';
 import 'package:chesterjetpack/screens/utils/DynamicBackground.dart';
@@ -18,8 +19,18 @@ class PlayGround extends BaseWidget {
 
   PlayGround() {
     _bg = DynamicBackground(0.2, 'play_ground/background.png');
-    _topBorder = RepetitiveAsset(0.02, 0, 0.2, 'play_ground/border.png');
-    _botBorder = RepetitiveAsset(0.02, 0.98, 0.2, 'play_ground/border.png');
+    _topBorder = RepetitiveAsset(
+      kBarHeightRatio,
+      kBarTopYRatio,
+      kBarSpeed,
+      'play_ground/border.png',
+    );
+    _botBorder = RepetitiveAsset(
+      kBarHeightRatio,
+      kBarBottomYRatio,
+      kBarSpeed,
+      'play_ground/border.png',
+    );
     _player = Player();
     storyHandler.reset();
   }
@@ -49,8 +60,8 @@ class PlayGround extends BaseWidget {
 
   @override
   void update(double t) {
-    _player.update(t);
     _bg.update(t);
+    _player.update(t);
     _topBorder.update(t);
     _botBorder.update(t);
     storyHandler.update(t);

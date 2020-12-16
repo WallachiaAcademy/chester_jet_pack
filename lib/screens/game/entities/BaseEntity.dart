@@ -9,4 +9,6 @@ abstract class BaseEntity extends BaseWidget {
   void hit(BasePlayer player);
 
   bool overlaps(Rect rect);
+
+  Rect getSurface();
 }

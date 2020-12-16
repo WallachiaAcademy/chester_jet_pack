@@ -58,10 +58,10 @@ abstract class DoubleAnimatedEntity extends BaseEntity {
   void renderSuper(Canvas canvas) {
     canvas.save();
     if (_entityState == EntityState.Normal) {
-      _first.x = _x - _first.width / 2;
+      _first.x = _x;
       _first.render(canvas);
     } else {
-      _second.x = _x - _second.width / 2;
+      _second.x = _x;
       _second.render(canvas);
     }
     canvas.restore();
@@ -76,13 +76,13 @@ abstract class DoubleAnimatedEntity extends BaseEntity {
   }) {
     _first.width = screenSize.width * fWR;
     _first.height = screenSize.height * fHR;
-    _first.y = screenSize.height * _yRatio - _first.height / 2;
+    _first.y = screenSize.height * _yRatio;
 
     _second.width = screenSize.width * sWR;
     _second.height = screenSize.height * sHR;
-    _second.y = screenSize.height * _yRatio - _second.height / 2;
+    _second.y = screenSize.height * _yRatio;
 
-    _x = screenSize.width + _first.width;
+    _x = screenSize.width;
   }
 
   @mustCallSuper
@@ -115,5 +115,10 @@ abstract class DoubleAnimatedEntity extends BaseEntity {
   @mustCallSuper
   void hitSuper() {
     _entityState = EntityState.Dying;
+  }
+
+  @override
+  Rect getSurface() {
+    return _first.toRect();
   }
 }

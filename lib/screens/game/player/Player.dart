@@ -18,6 +18,11 @@ class Player extends BasePlayer {
   double _speed;
   double _maxSpeed;
   double _y;
+  double _x;
+  double _xSmokeOffset;
+
+  double _topLimit;
+  double _bottomLimit;
 
   bool _renderPlayer;
   bool _hitInProgress;
@@ -29,22 +34,37 @@ class Player extends BasePlayer {
   Player() {
     List<Sprite> sprites =
         [1, 2, 3, 4].map((e) => Sprite('player/${e}.png')).toList();
-    _player =
-        AnimationComponent(0, 0, Animation.spriteList(sprites, stepTime: 0.1));
+    _player = AnimationComponent(
+        0,
+        0,
+        Animation.spriteList(
+          sprites,
+          stepTime: kPlayerAnimationSpeed,
+        ));
 
     sprites = [1, 2, 3, 4].map((e) => Sprite('player/s${e}.png')).toList();
-    _smoke =
-        AnimationComponent(0, 0, Animation.spriteList(sprites, stepTime: 0.1));
+    _smoke = AnimationComponent(
+        0,
+        0,
+        Animation.spriteList(
+          sprites,
+          stepTime: kPlayerAnimationSpeed,
+        ));
 
     _speed = 0;
     _maxSpeed = 0;
     _y = 0;
+    _x = 0;
+    _xSmokeOffset = 0;
 
     _hitInProgress = false;
     _renderPlayer = true;
 
     _lifeTracker = LifeTracker();
     _scoreHolder = ScoreHolder();
+
+    _topLimit = 0;
+    _bottomLimit = 0;
   }
   @override
   void onTapDown(TapDownDetails detail, Function fn) {
@@ -56,11 +76,13 @@ class Player extends BasePlayer {
     if (_renderPlayer) {
       if (_speed < _maxSpeed) {
         canvas.save();
-        _smoke.y = _y + _player.height * 0.5;
+        _smoke.x = _x - _xSmokeOffset;
+        _smoke.y = _y + _player.height * kPlayerSmokeYRatio;
         _smoke.render(canvas);
         canvas.restore();
       }
       canvas.save();
+      _player.x = _x;
       _player.y = _y;
       _player.render(canvas);
       canvas.restore();
@@ -72,16 +94,19 @@ class Player extends BasePlayer {
 
   @override
   void resize() {
-    _y = (screenSize.height - screenSize.height * 0.25) / 2;
-    _maxSpeed = screenSize.height * 0.005;
+    _maxSpeed = screenSize.height * kPlayerBumpSpeed;
 
-    _smoke.x = screenSize.width * 0.005;
-    _smoke.width = screenSize.width * 0.15;
-    _smoke.height = screenSize.height * 0.25;
+    _xSmokeOffset = screenSize.width * kPlayerSmokeXOffset;
+    _smoke.width = screenSize.width * kPlayerSmokeWidthRatio;
+    _smoke.height = screenSize.height * kPlayerSmokeHeightRatio;
 
-    _player.x = screenSize.width * 0.1;
-    _player.width = screenSize.width * 0.15;
-    _player.height = screenSize.height * 0.25;
+    _player.width = screenSize.width * kPlayerWidthRatio;
+    _player.height = screenSize.height * kPlayerHeightRatio;
+
+    _topLimit = screenSize.height * kBarHeightRatio;
+    _bottomLimit = screenSize.height * kBarBottomYRatio - _player.height;
+
+    _resetPlayerPosition();
 
     _lifeTracker.resize();
     _scoreHolder.resize();
@@ -101,10 +126,7 @@ class Player extends BasePlayer {
   }
 
   void _updatePosition() {
-    _y += _speed;
-    if (_y > screenSize.height - _player.height)
-      _y = screenSize.height - _player.height;
-    if (_y < 0) _y = 0;
+    _setYPosition(_speed + _y);
   }
 
   void _updateSpeed(double t) {
@@ -154,7 +176,20 @@ class Player extends BasePlayer {
   }
 
   @override
-  void pushBack(double x) {
+  void pushBack(Rect rect) {
     // TODO: implement pushBack
+  }
+
+  void _setYPosition(double newValue) {
+    if (newValue < _topLimit)
+      newValue = _topLimit;
+    else if (newValue > _bottomLimit) newValue = _bottomLimit;
+
+    _y = newValue;
+  }
+
+  void _resetPlayerPosition() {
+    _x = screenSize.width * kPlayerXRatio;
+    _setYPosition((screenSize.height - _player.height) / 2);
   }
 }
