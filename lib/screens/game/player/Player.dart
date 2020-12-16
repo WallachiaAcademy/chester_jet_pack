@@ -176,8 +176,8 @@ class Player extends BasePlayer {
   }
 
   @override
-  void pushBack(Rect rect) {
-    // TODO: implement pushBack
+  void reposition(Rect rect) {
+    // TODO: implement reposition
   }
 
   void _setYPosition(double newValue) {

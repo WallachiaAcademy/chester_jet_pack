@@ -99,7 +99,7 @@ class Pillar extends BaseEntity {
 
   @override
   void hit(BasePlayer player) {
-    player.pushBack(getSurface());
+    player.reposition(getSurface());
   }
 
   @override

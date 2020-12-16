@@ -9,5 +9,5 @@ abstract class BasePlayer extends BaseWidget {
 
   void collectCoin();
 
-  void pushBack(Rect rect);
+  void reposition(Rect rect);
 }
