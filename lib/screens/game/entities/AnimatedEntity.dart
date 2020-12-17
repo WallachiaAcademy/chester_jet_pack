@@ -44,7 +44,7 @@ abstract class AnimatedEntity extends BaseEntity {
   void renderSuper(Canvas canvas) {
     canvas.save();
 
-    _animation.x = _x - _animation.width / 2;
+    _animation.x = _x;
     _animation.render(canvas);
 
     canvas.restore();
@@ -57,9 +57,9 @@ abstract class AnimatedEntity extends BaseEntity {
   }) {
     _animation.width = screenSize.width * wR;
     _animation.height = screenSize.height * hR;
-    _animation.y = screenSize.height * _yRatio - _animation.height / 2;
+    _animation.y = screenSize.height * _yRatio;
 
-    _x = screenSize.width + _animation.width;
+    _x = screenSize.width;
   }
 
   @mustCallSuper
@@ -78,5 +78,10 @@ abstract class AnimatedEntity extends BaseEntity {
 
   void die() {
     _state = EntityState.Dead;
+  }
+
+  @override
+  Rect getSurface() {
+    return _animation.toRect();
   }
 }

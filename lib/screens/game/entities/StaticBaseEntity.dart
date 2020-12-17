@@ -31,7 +31,7 @@ abstract class StaticBaseEntity extends BaseEntity {
   void renderSuper(Canvas canvas) {
     canvas.save();
 
-    _component.x = _x - _component.width / 2;
+    _component.x = _x;
     _component.render(canvas);
 
     canvas.restore();
@@ -44,9 +44,9 @@ abstract class StaticBaseEntity extends BaseEntity {
   }) {
     _component.width = screenSize.width * wR;
     _component.height = screenSize.height * hR;
-    _component.y = screenSize.height * _yRatio - _component.height / 2;
+    _component.y = screenSize.height * _yRatio;
 
-    _x = screenSize.width + _component.width;
+    _x = screenSize.width;
   }
 
   @mustCallSuper
@@ -66,5 +66,8 @@ abstract class StaticBaseEntity extends BaseEntity {
     _state = EntityState.Dead;
   }
 
-  double getX() => _x;
+  @override
+  Rect getSurface() {
+    return _component.toRect();
+  }
 }

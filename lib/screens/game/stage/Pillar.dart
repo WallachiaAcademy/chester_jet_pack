@@ -25,7 +25,9 @@ class Pillar extends BaseEntity {
   double _yRatio;
 
   EntityState _state;
-  Pillar(String side, List<double> args) {
+  final String side;
+
+  Pillar(this.side, List<double> args) {
     _front = SpriteComponent.fromSprite(
         0, 0, Sprite('stage/' + side + '_pillar_front.png'));
     _back = SpriteComponent.fromSprite(
@@ -44,27 +46,40 @@ class Pillar extends BaseEntity {
   @override
   void render(Canvas canvas) {
     canvas.save();
-    _back.x = _x - _back.width / 2;
+    _back.x = _x;
     _back.render(canvas);
     canvas.restore();
 
     canvas.save();
-    _front.x = _x - _front.width / 2;
+    _front.x = _x;
     _front.render(canvas);
     canvas.restore();
   }
 
   @override
   void resize() {
-    _front.width = screenSize.width * kPillarWidthRatio;
-    _front.height = screenSize.height * kPillarHeightRatio;
-    _front.y = screenSize.height * _yRatio - _front.height / 2;
+    if (side == "top") {
+      _back.width = screenSize.width * kPillarWidthRatio;
+      _front.width = screenSize.width * kPillarWidthRatio;
 
-    _back.width = screenSize.width * kPillarWidthRatio;
-    _back.height = screenSize.height * kPillarHeightRatio;
-    _back.y = screenSize.height * _yRatio - _back.height / 2;
+      _back.height = screenSize.height * kPillarBackHeightRatio;
+      _front.height = screenSize.height * kPillarFrontHeightRatio;
 
-    _x = screenSize.width + _front.width;
+      var totalHeight = _back.height + _front.height;
+      _back.y = screenSize.height * _yRatio - totalHeight / 2;
+      _front.y = _back.y + _back.height;
+    } else {
+      _back.width = screenSize.width * kPillarWidthRatio;
+      _front.width = screenSize.width * kPillarWidthRatio;
+
+      _back.height = screenSize.height * kPillarBackHeightRatio;
+      _front.height = screenSize.height * kPillarFrontHeightRatio;
+
+      _front.y = screenSize.height * _yRatio;
+      _back.y = _front.y + _front.height;
+    }
+
+    _x = screenSize.width;
   }
 
   @override
@@ -84,11 +99,16 @@ class Pillar extends BaseEntity {
 
   @override
   void hit(BasePlayer player) {
-    player.pushBack(_x);
+    player.reposition(getSurface());
   }
 
   @override
   void onTapDown(TapDownDetails detail, Function fn) {
     // TODO: implement onTapDown
+  }
+
+  @override
+  Rect getSurface() {
+    return _front.toRect();
   }
 }

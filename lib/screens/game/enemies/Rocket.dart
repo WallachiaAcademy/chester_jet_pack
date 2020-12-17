@@ -1,5 +1,6 @@
 import 'dart:ui';
 
+import 'package:chesterjetpack/screens/game/EntitiesSizes.dart';
 import 'package:chesterjetpack/screens/game/entities/DoubleAnimatedEntity.dart';
 import 'package:chesterjetpack/screens/game/player/BasePlayer.dart';
 import 'package:flutter/src/gestures/tap.dart';
@@ -27,16 +28,16 @@ class Rocket extends DoubleAnimatedEntity {
   @override
   void resize() {
     super.superResize(
-      fWR: 0.1,
-      fHR: 0.06,
-      sWR: 0.14,
-      sHR: 0.24,
+      fWR: kRocketWidthRatio,
+      fHR: kRocketHeightRatio,
+      sWR: kExplosionWidthRatio,
+      sHR: kExplosionHeightRatio,
     );
   }
 
   @override
   void update(double t) {
-    super.updateSuper(t, normalFact: 2, dyingFactor: 4);
+    super.updateSuper(t, normalFact: 1, dyingFactor: 4);
   }
 
   @override

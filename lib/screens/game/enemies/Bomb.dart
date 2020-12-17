@@ -48,8 +48,8 @@ class Bomb extends DoubleAnimatedEntity {
     super.superResize(
       fWR: kBombWidthRatio,
       fHR: kBombHeightRatio,
-      sWR: kBombExplosionWidthRatio,
-      sHR: kBombExplosionHeightRatio,
+      sWR: kExplosionWidthRatio,
+      sHR: kExplosionHeightRatio,
     );
   }
 

@@ -10,7 +10,7 @@ class WoodBox extends StaticBaseEntity {
 
   @override
   void hit(BasePlayer player) {
-    player.pushBack(getX());
+    player.reposition(getSurface());
   }
 
   @override
