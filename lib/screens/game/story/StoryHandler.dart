@@ -158,6 +158,22 @@ class StoryHandler {
     _steps.addLast(Step(10.76, EntityType.WoodBox, [0.72]));
     _steps.addLast(Step(10.94, EntityType.MetalBox, [0.82]));
     _steps.addLast(Step(11.12, EntityType.MetalBox, [0.82]));
+
+    _steps.addLast(Step(11.5, EntityType.TopPillar, [0.2]));
+    _steps.addLast(Step(11.5, EntityType.BottomPillar, [0.8]));
+    _steps.addLast(Step(11.6, EntityType.Coin, [0.68]));
+
+    _steps.addLast(Step(11.91, EntityType.TopPillar, [0.22]));
+    _steps.addLast(Step(11.91, EntityType.BottomPillar, [0.82]));
+    _steps.addLast(Step(12.01, EntityType.Coin, [0.7]));
+
+    _steps.addLast(Step(12.32, EntityType.TopPillar, [0.24]));
+    _steps.addLast(Step(12.32, EntityType.BottomPillar, [0.84]));
+    _steps.addLast(Step(12.42, EntityType.Coin, [0.72]));
+
+    _steps.addLast(Step(12.73, EntityType.TopPillar, [0.26]));
+    _steps.addLast(Step(12.73, EntityType.BottomPillar, [0.86]));
+    _steps.addLast(Step(12.83, EntityType.Coin, [0.74]));
   }
 
   void reset() {

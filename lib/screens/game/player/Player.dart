@@ -130,7 +130,7 @@ class Player extends BasePlayer {
   }
 
   void _updateSpeed(double t) {
-    _speed += t * _maxSpeed * 3;
+    _speed += t * _maxSpeed * 5;
     if (_speed > _maxSpeed) _speed = _maxSpeed;
   }
 

@@ -38,7 +38,7 @@ const double kBarBottomYRatio = 0.98;
 
 // Player
 const double kPlayerAnimationSpeed = 0.1;
-const double kPlayerBumpSpeed = 0.005;
+const double kPlayerBumpSpeed = 0.01;
 
 const double kPlayerSmokeXOffset = 0.12;
 const double kPlayerSmokeYRatio = 0.5;
