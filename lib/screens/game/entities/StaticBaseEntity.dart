@@ -52,7 +52,7 @@ abstract class StaticBaseEntity extends BaseEntity {
   @mustCallSuper
   void updateSuper(double t, {double normalFact = 2}) {
     _x -= t * screenSize.width / normalFact;
-    if (_x + _component.width < 0) {
+    if (_x + _component.width * 2 < 0) {
       _state = EntityState.Dead;
     }
   }

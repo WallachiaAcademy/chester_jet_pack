@@ -102,7 +102,7 @@ abstract class DoubleAnimatedEntity extends BaseEntity {
         _entityState = EntityState.Dead;
       }
     }
-    if (_x + width < 0) {
+    if (_x + width * 2 < 0) {
       _entityState = EntityState.Dead;
     }
   }
