@@ -66,7 +66,7 @@ abstract class AnimatedEntity extends BaseEntity {
   void updateSuper(double t, {double normalFact = 2}) {
     _x -= t * screenSize.width / normalFact;
     _animation.update(t);
-    if (_x + _animation.width < 0) {
+    if (_x + _animation.width * 2 < 0) {
       _state = EntityState.Dead;
     }
   }

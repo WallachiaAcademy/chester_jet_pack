@@ -174,6 +174,48 @@ class StoryHandler {
     _steps.addLast(Step(12.73, EntityType.TopPillar, [0.26]));
     _steps.addLast(Step(12.73, EntityType.BottomPillar, [0.86]));
     _steps.addLast(Step(12.83, EntityType.Coin, [0.74]));
+
+    _steps.addLast(Step(13.2, EntityType.MetalBox, [0.82]));
+    _steps.addLast(Step(13.23, EntityType.Coin, [0.685]));
+
+    _steps.addLast(Step(13.38, EntityType.MetalBox, [0.82]));
+    _steps.addLast(Step(13.41, EntityType.Coin, [0.685]));
+
+    _steps.addLast(Step(13.56, EntityType.MetalBox, [0.82]));
+    _steps.addLast(Step(13.59, EntityType.Coin, [0.685]));
+
+    _steps.addLast(Step(13.74, EntityType.MetalBox, [0.82]));
+    _steps.addLast(Step(13.77, EntityType.Coin, [0.685]));
+
+    _steps.addLast(Step(13.92, EntityType.MetalBox, [0.82]));
+    _steps.addLast(Step(13.95, EntityType.Coin, [0.685]));
+
+    _steps.addLast(Step(14.10, EntityType.MetalBox, [0.82]));
+    _steps.addLast(Step(14.13, EntityType.Coin, [0.685]));
+
+    _steps.addLast(Step(14.28, EntityType.MetalBox, [0.82]));
+    _steps.addLast(Step(14.31, EntityType.Coin, [0.685]));
+
+    _steps.addLast(Step(14.46, EntityType.MetalBox, [0.82]));
+    _steps.addLast(Step(14.46, EntityType.WoodBox, [0.72]));
+    _steps.addLast(Step(14.49, EntityType.Coin, [0.585]));
+    _steps.addLast(Step(14.58, EntityType.WoodBox, [0.72]));
+
+    _steps.addLast(Step(14.64, EntityType.MetalBox, [0.82]));
+    _steps.addLast(Step(14.67, EntityType.Coin, [0.585]));
+    _steps.addLast(Step(14.70, EntityType.WoodBox, [0.72]));
+
+    _steps.addLast(Step(14.82, EntityType.MetalBox, [0.82]));
+    _steps.addLast(Step(14.85, EntityType.Coin, [0.685]));
+    _steps.addLast(Step(15.00, EntityType.MetalBox, [0.82]));
+    _steps.addLast(Step(15.03, EntityType.Coin, [0.685]));
+    _steps.addLast(Step(15.18, EntityType.MetalBox, [0.82]));
+    _steps.addLast(Step(15.21, EntityType.Coin, [0.685]));
+
+    _steps.addLast(Step(15.45, EntityType.BottomPillar, [0.6]));
+    _steps.addLast(Step(15.86, EntityType.BottomPillar, [0.575]));
+    _steps.addLast(Step(16.27, EntityType.BottomPillar, [0.55]));
+    _steps.addLast(Step(16.68, EntityType.BottomPillar, [0.525]));
   }
 
   void reset() {

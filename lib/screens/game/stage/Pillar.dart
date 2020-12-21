@@ -85,7 +85,7 @@ class Pillar extends BaseEntity {
   @override
   void update(double t, {double normalFact = 2}) {
     _x -= t * screenSize.width / normalFact;
-    if (_x + _front.width < 0) {
+    if (_x + _front.width * 2 < 0) {
       _state = EntityState.Dead;
     }
   }

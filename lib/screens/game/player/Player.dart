@@ -15,10 +15,15 @@ import 'BasePlayer.dart';
 class Player extends BasePlayer {
   AnimationComponent _player;
   AnimationComponent _smoke;
+
   double _speed;
   double _maxSpeed;
+  double _xSpeed;
+
   double _y;
+
   double _x;
+  double _nominalX;
   double _xSmokeOffset;
 
   double _topLimit;
@@ -52,9 +57,12 @@ class Player extends BasePlayer {
         ));
 
     _speed = 0;
+    _xSpeed = 0;
     _maxSpeed = 0;
+
     _y = 0;
     _x = 0;
+    _nominalX = 0;
     _xSmokeOffset = 0;
 
     _hitInProgress = false;
@@ -95,6 +103,7 @@ class Player extends BasePlayer {
   @override
   void resize() {
     _maxSpeed = screenSize.height * kPlayerBumpSpeed;
+    _xSpeed = screenSize.width * kPlayerXSpeed;
 
     _xSmokeOffset = screenSize.width * kPlayerSmokeXOffset;
     _smoke.width = screenSize.width * kPlayerSmokeWidthRatio;
@@ -106,6 +115,7 @@ class Player extends BasePlayer {
     _topLimit = screenSize.height * kBarHeightRatio;
     _bottomLimit = screenSize.height * kBarBottomYRatio - _player.height;
 
+    _nominalX = screenSize.width * kPlayerXRatio;
     _resetPlayerPosition();
 
     _lifeTracker.resize();
@@ -123,10 +133,25 @@ class Player extends BasePlayer {
     _checkIfHit();
     _lifeTracker.update(t);
     _scoreHolder.update(t);
+
+    _checkPositions();
   }
 
   void _updatePosition() {
     _setYPosition(_speed + _y);
+
+    if (_x < _nominalX)
+      _x += _xSpeed;
+    else
+      _x = _nominalX;
+  }
+
+  void _checkPositions() {
+    if (_x + _player.width < 0) {
+      hit();
+      _resetPlayerPosition();
+      _speed = _maxSpeed;
+    }
   }
 
   void _updateSpeed(double t) {
@@ -135,7 +160,8 @@ class Player extends BasePlayer {
   }
 
   void _checkIfHit() {
-    var rect = _player.toRect();
+    var rect = Rect.fromLTWH(_x, _y, _player.width, _player.height);
+
     for (var e in storyHandler.entities) {
       if (e.overlaps(rect)) e.hit(this);
     }
@@ -177,7 +203,18 @@ class Player extends BasePlayer {
 
   @override
   void reposition(Rect rect) {
-    // TODO: implement reposition
+    var playerRect = Rect.fromLTWH(_x, _y, _player.width, _player.height);
+
+    if (playerRect.top <= rect.center.dy &&
+        playerRect.bottom >= rect.center.dy) {
+      _x = rect.left - playerRect.width;
+    } else {
+      if (playerRect.center.dy < rect.center.dy) {
+        _setYPosition(rect.top - playerRect.height);
+      } else {
+        _setYPosition(rect.bottom);
+      }
+    }
   }
 
   void _setYPosition(double newValue) {
@@ -189,7 +226,7 @@ class Player extends BasePlayer {
   }
 
   void _resetPlayerPosition() {
-    _x = screenSize.width * kPlayerXRatio;
+    _x = _nominalX;
     _setYPosition((screenSize.height - _player.height) / 2);
   }
 }
