@@ -3,6 +3,7 @@ import 'dart:ui';
 
 import 'package:chesterjetpack/screens/BaseWidget.dart';
 import 'package:chesterjetpack/screens/game_screens/PlayGround.dart';
+import 'package:chesterjetpack/screens/game_screens/ScoreScreen.dart';
 import 'package:chesterjetpack/screens/game_screens/ScreenState.dart';
 import 'package:chesterjetpack/screens/utils/SizeHolder.dart';
 import 'package:flame/game/game.dart';
@@ -22,6 +23,7 @@ class ScreenManager extends Game with TapDetector {
   // Screens
   BaseWidget _mainScreen;
   BaseWidget _playScreen;
+  BaseWidget _scoreScreen;
 
   ScreenManager() {
     _fn = _init;
@@ -49,6 +51,7 @@ class ScreenManager extends Game with TapDetector {
     _fn = _update;
     _mainScreen = MainScreen();
     _playScreen = PlayGround();
+    _scoreScreen = ScoreScreen();
 
     Util flameUtils = Util();
     await flameUtils.fullScreen();
@@ -69,6 +72,8 @@ class ScreenManager extends Game with TapDetector {
         return _mainScreen;
       case ScreenState.kPlayScreen:
         return _playScreen;
+      case ScreenState.kScoreScreen:
+        return _scoreScreen;
       default:
         return _mainScreen;
     }
@@ -91,6 +96,13 @@ class ScreenManager extends Game with TapDetector {
           _screenState = newScreen;
         });
         break;
+      case ScreenState.kScoreScreen:
+        _scoreScreen = ScoreScreen();
+        _scoreScreen.resize();
+
+        Timer(Duration(milliseconds: 100), () {
+          _screenState = newScreen;
+        });
     }
   }
 }

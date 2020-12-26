@@ -229,4 +229,9 @@ class Player extends BasePlayer {
     _x = _nominalX;
     _setYPosition((screenSize.height - _player.height) / 2);
   }
+
+  @override
+  bool isDead() {
+    return _lifeTracker.isDead();
+  }
 }
