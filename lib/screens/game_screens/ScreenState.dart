@@ -1,1 +1,5 @@
-enum ScreenState { kMenuScreen, kPlayScreen }
+enum ScreenState {
+  kMenuScreen,
+  kPlayScreen,
+  kScoreScreen,
+}

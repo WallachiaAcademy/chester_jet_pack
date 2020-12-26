@@ -10,4 +10,6 @@ abstract class BasePlayer extends BaseWidget {
   void collectCoin();
 
   void reposition(Rect rect);
+
+  bool isDead();
 }
