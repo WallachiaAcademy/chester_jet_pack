@@ -2,6 +2,7 @@ import 'dart:ui';
 
 import 'package:chesterjetpack/screens/BaseWidget.dart';
 import 'package:chesterjetpack/screens/game/EntitiesSizes.dart';
+import 'package:chesterjetpack/screens/game/data/UserData.dart';
 import 'package:chesterjetpack/screens/game/player/Player.dart';
 import 'package:chesterjetpack/screens/game/story/StoryHandler.dart';
 import 'package:chesterjetpack/screens/game_screens/ScreenManager.dart';
@@ -18,6 +19,8 @@ class PlayGround extends BaseWidget {
   BaseWidget _botBorder;
 
   Player _player;
+
+  bool _isGameOver = false;
 
   PlayGround() {
     _bg = DynamicBackground(0.2, 'play_ground/background.png');
@@ -62,14 +65,18 @@ class PlayGround extends BaseWidget {
 
   @override
   void update(double t) {
-    _bg.update(t);
-    _player.update(t);
-    _topBorder.update(t);
-    _botBorder.update(t);
-    storyHandler.update(t);
+    if (!_isGameOver) {
+      _bg.update(t);
+      _player.update(t);
+      _topBorder.update(t);
+      _botBorder.update(t);
+      storyHandler.update(t);
 
-    if (_player.isDead()) {
-      screenManager.switchScreen(ScreenState.kScoreScreen);
+      if (_player.isDead()) {
+        userData.setScore(_player.getScore());
+        _isGameOver = true;
+        screenManager.switchScreen(ScreenState.kScoreScreen);
+      }
     }
   }
 }

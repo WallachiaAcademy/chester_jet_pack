@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:ui';
 
 import 'package:chesterjetpack/screens/BaseWidget.dart';
+import 'package:chesterjetpack/screens/game/data/UserData.dart';
 import 'package:chesterjetpack/screens/game_screens/PlayGround.dart';
 import 'package:chesterjetpack/screens/game_screens/ScoreScreen.dart';
 import 'package:chesterjetpack/screens/game_screens/ScreenState.dart';
@@ -56,6 +57,8 @@ class ScreenManager extends Game with TapDetector {
     Util flameUtils = Util();
     await flameUtils.fullScreen();
     await flameUtils.setOrientation(DeviceOrientation.landscapeLeft);
+
+    userData.loadData();
   }
 
   void _update(double t) {
@@ -100,7 +103,7 @@ class ScreenManager extends Game with TapDetector {
         _scoreScreen = ScoreScreen();
         _scoreScreen.resize();
 
-        Timer(Duration(milliseconds: 100), () {
+        Timer(Duration(milliseconds: 500), () {
           _screenState = newScreen;
         });
     }

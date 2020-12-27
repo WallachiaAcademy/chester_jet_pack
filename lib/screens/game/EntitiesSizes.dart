@@ -58,3 +58,5 @@ const double kHpYAlignment = 0.88;
 const double kScoreFontRatio = 0.06;
 const double kScoreXRatio = 0.99;
 const double kScoreYRatio = 0.02;
+
+const double kScoreScreenFontRatio = 0.07;
