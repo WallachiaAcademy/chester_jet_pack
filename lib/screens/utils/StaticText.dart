@@ -5,6 +5,11 @@ import 'package:flutter/src/gestures/tap.dart';
 
 import 'SizeHolder.dart';
 
+enum TextAnchor {
+  RightTop,
+  Center,
+}
+
 class StaticText {
   TextPainter _painter;
   TextStyle _textStyle;
@@ -15,9 +20,10 @@ class StaticText {
   final double _fontRatio;
   final double _xRatio;
   final double _yRatio;
+  final TextAnchor _anchor;
 
   StaticText(this._textColor, this._shadowColor, this._fontRatio, this._xRatio,
-      this._yRatio) {
+      this._yRatio, this._anchor) {
     _painter = TextPainter(
         textAlign: TextAlign.center, textDirection: TextDirection.ltr);
 
@@ -65,7 +71,15 @@ class StaticText {
 
     _painter.layout();
 
-    _position = Offset(screenSize.width * _xRatio - _painter.width,
-        screenSize.height * _yRatio);
+    switch (_anchor) {
+      case TextAnchor.RightTop:
+        _position = Offset(screenSize.width * _xRatio - _painter.width,
+            screenSize.height * _yRatio);
+        break;
+      case TextAnchor.Center:
+        _position = Offset(screenSize.width * _xRatio - _painter.width / 2,
+            screenSize.height * _yRatio - _painter.height / 2);
+        break;
+    }
   }
 }

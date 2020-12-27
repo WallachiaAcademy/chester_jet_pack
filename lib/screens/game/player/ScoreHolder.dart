@@ -16,6 +16,7 @@ class ScoreHolder extends BaseWidget {
       kScoreFontRatio,
       kScoreXRatio,
       kScoreYRatio,
+      TextAnchor.RightTop,
     );
   }
   @override
@@ -41,5 +42,9 @@ class ScoreHolder extends BaseWidget {
 
   void increaseScore(double reward) {
     _score += reward;
+  }
+
+  int getScore() {
+    return _score.toInt();
   }
 }

@@ -149,8 +149,10 @@ class Player extends BasePlayer {
   void _checkPositions() {
     if (_x + _player.width < 0) {
       hit();
-      _resetPlayerPosition();
-      _speed = _maxSpeed;
+      if (!_lifeTracker.isDead()) {
+        _resetPlayerPosition();
+        _speed = _maxSpeed;
+      }
     }
   }
 
@@ -233,5 +235,9 @@ class Player extends BasePlayer {
   @override
   bool isDead() {
     return _lifeTracker.isDead();
+  }
+
+  int getScore() {
+    return _scoreHolder.getScore();
   }
 }
