@@ -44,6 +44,7 @@ flutter:
   assets:
     - assets/images/menu/
     - assets/images/play_ground/
+    - assets/images/score/
     - assets/images/player/
     - assets/images/enemies/rocket/
     - assets/images/enemies/electric_obstacle/

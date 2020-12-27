@@ -4,6 +4,8 @@ import 'package:chesterjetpack/screens/BaseWidget.dart';
 import 'package:chesterjetpack/screens/game/EntitiesSizes.dart';
 import 'package:chesterjetpack/screens/game/player/Player.dart';
 import 'package:chesterjetpack/screens/game/story/StoryHandler.dart';
+import 'package:chesterjetpack/screens/game_screens/ScreenManager.dart';
+import 'package:chesterjetpack/screens/game_screens/ScreenState.dart';
 import 'package:chesterjetpack/screens/utils/DynamicBackground.dart';
 import 'package:chesterjetpack/screens/utils/RepetitiveAsset.dart';
 import 'package:flutter/src/gestures/tap.dart';
@@ -65,5 +67,9 @@ class PlayGround extends BaseWidget {
     _topBorder.update(t);
     _botBorder.update(t);
     storyHandler.update(t);
+
+    if (_player.isDead()) {
+      screenManager.switchScreen(ScreenState.kScoreScreen);
+    }
   }
 }

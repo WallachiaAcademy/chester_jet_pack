@@ -220,6 +220,8 @@ class StoryHandler {
 
   void reset() {
     _populateStory();
+    _time = 0;
+    entities.clear();
   }
 
   void onTapDown(TapDownDetails detail, Function fn) {
