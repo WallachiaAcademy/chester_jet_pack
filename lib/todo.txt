@@ -1,19 +1,20 @@
 Mechanisms:
-- Enhance the transition between PlayScreen and ScoreScreen.
 - Background music.
 - Implement environment music (such as collect coin or explode bomb).
 
 Screens:
-- ScoreScreen
-    - Best score
-    - Current score
+- ScoreScreen:
+    - Enhance the graphics of this screen (e.g. redesign).
 - PlayScreen
     - Pause button
         - End game
         - Disable/Enable Music
 - Menu Screen
+    - Add a button to share the game to your friends
+- Rate the app screen
+- Follow us screen
+- About screen
 
 Story:
 - Implement a catchy story
-- Implement a mechanism to loop forever the final part of the story.
 
