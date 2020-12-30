@@ -1,6 +1,8 @@
 Mechanisms:
 - Background music.
 - Implement environment music (such as collect coin or explode bomb).
+- Preload images during init phase.
+- Change game name.
 
 Screens:
 - ScoreScreen:
@@ -11,6 +13,7 @@ Screens:
         - Disable/Enable Music
 - Menu Screen
     - Add a button to share the game to your friends
+	- Change the logo
 - Rate the app screen
 - Follow us screen
 - About screen
