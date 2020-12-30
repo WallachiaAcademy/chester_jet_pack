@@ -48,7 +48,7 @@ class LifeTracker extends BaseWidget {
   }
 
   void decreaseHp() {
-    //if (_lifeCount > 0) _lifeCount--;
+    if (_lifeCount > 0) _lifeCount--;
   }
 
   bool isDead() {
