@@ -141,13 +141,12 @@ class StoryQueue {
     _steps.addLast(Step(startTime + 1.64, EntityType.BottomPillar, [0.6]));
     _steps.addLast(Step(startTime + 1.75, EntityType.Coin, [0.45]));
 
-    if (_storyShuffler.nextBool()) {
+    if (_storyShuffler.nextBool())
       _steps.addLast(Step(startTime + 1.75, EntityType.BonusHp, [0.85]));
+    if (_storyShuffler.nextBool())
       _steps.addLast(Step(startTime + 1.75, EntityType.BonusHp, [0.7]));
-    }
-    if (_storyShuffler.nextBool()) {
+    if (_storyShuffler.nextBool())
       _steps.addLast(Step(startTime + 1.9, EntityType.Rocket, [0.3]));
-    }
   }
 
   void _chapter2(double startTime) {
@@ -171,6 +170,11 @@ class StoryQueue {
     _steps.addLast(Step(startTime + 0.72, EntityType.MetalBox, [0.66]));
     _steps.addLast(Step(startTime + 0.75, EntityType.Coin, [0.45]));
     _steps.addLast(Step(startTime + 0.93, EntityType.BonusHp, [0.845]));
+
+    if (_storyShuffler.nextBool())
+      _steps.addLast(Step(startTime + 0.93, EntityType.Rocket, [0.05]));
+    if (_storyShuffler.nextBool())
+      _steps.addLast(Step(startTime + 0.93, EntityType.Rocket, [0.15]));
   }
 
   void _chapter3(double startTime) {
@@ -255,7 +259,11 @@ class StoryQueue {
     _steps.addLast(Step(startTime + 0.85, EntityType.Coin, [0.525]));
 
     _steps.addLast(Step(startTime + 1.15, EntityType.BottomPillar, [0.66]));
-    _steps.addLast(Step(startTime + 1.26, EntityType.BonusHp, [0.525]));
+    if (_storyShuffler.nextBool())
+      _steps.addLast(Step(startTime + 1.26, EntityType.BonusHp, [0.525]));
+    else
+      _steps.addLast(Step(startTime + 1.26, EntityType.Coin, [0.525]));
+
     _steps.addLast(Step(startTime + 1.5, EntityType.Rocket, [0.525]));
 
     _steps.addLast(Step(startTime + 1.56, EntityType.BottomPillar, [0.66]));
@@ -358,7 +366,10 @@ class StoryQueue {
     _steps.addLast(Step(startTime + 1.08, EntityType.WoodBox, [0.78]));
     _steps.addLast(Step(startTime + 1.2, EntityType.WoodBox, [0.78]));
     _steps.addLast(Step(startTime + 1.28, EntityType.WoodBox, [0.88]));
-    _steps.addLast(Step(startTime + 1.21, EntityType.BonusHp, [0.1]));
+    if (_storyShuffler.nextBool())
+      _steps.addLast(Step(startTime + 1.21, EntityType.BonusHp, [0.1]));
+    else
+      _steps.addLast(Step(startTime + 1.21, EntityType.Coin, [0.1]));
 
     _steps.addLast(Step(startTime + 1.4, EntityType.MetalBox, [0.82]));
     _steps.addLast(Step(startTime + 1.4, EntityType.MetalBox, [0.66]));
@@ -400,7 +411,10 @@ class StoryQueue {
     _steps.addLast(Step(startTime + 1.85, EntityType.Coin, [0.685]));
 
     _steps.addLast(Step(startTime + 2.00, EntityType.MetalBox, [0.82]));
-    _steps.addLast(Step(startTime + 2.03, EntityType.Coin, [0.685]));
+    if (_storyShuffler.nextBool())
+      _steps.addLast(Step(startTime + 2.03, EntityType.BonusHp, [0.685]));
+    else
+      _steps.addLast(Step(startTime + 2.03, EntityType.Coin, [0.685]));
 
     _steps.addLast(Step(startTime + 2.18, EntityType.MetalBox, [0.82]));
     _steps.addLast(Step(startTime + 2.18, EntityType.WoodBox, [0.62]));
