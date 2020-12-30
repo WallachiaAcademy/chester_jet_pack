@@ -1,8 +1,4 @@
 Video 33:
-- Implement catchy infinite story
-- Reduce the reward gained by collecting gold/play the game
-- Change the logo.
-- Change game name.
 - Change game icon.
 
 Video 34:
