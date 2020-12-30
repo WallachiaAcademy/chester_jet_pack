@@ -1,6 +1,15 @@
+Video 33:
+- Change game icon.
+
+Video 34:
+- Implement loading screen
+- Preload images during init phase.
+
+
 Mechanisms:
 - Background music.
 - Implement environment music (such as collect coin or explode bomb).
+
 
 Screens:
 - ScoreScreen:
@@ -15,6 +24,4 @@ Screens:
 - Follow us screen
 - About screen
 
-Story:
-- Implement a catchy story
 

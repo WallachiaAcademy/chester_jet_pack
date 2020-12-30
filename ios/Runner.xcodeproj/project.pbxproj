@@ -310,7 +310,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Flutter",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = wallachiaacademy.chesterjetpack;
+				PRODUCT_BUNDLE_IDENTIFIER = wallachiaacademy.herojetpack;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				VERSIONING_SYSTEM = "apple-generic";
 			};
@@ -438,7 +438,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Flutter",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = wallachiaacademy.chesterjetpack;
+				PRODUCT_BUNDLE_IDENTIFIER = wallachiaacademy.herojetpack;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				VERSIONING_SYSTEM = "apple-generic";
 			};
@@ -461,7 +461,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Flutter",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = wallachiaacademy.chesterjetpack;
+				PRODUCT_BUNDLE_IDENTIFIER = wallachiaacademy.herojetpack;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				VERSIONING_SYSTEM = "apple-generic";
 			};

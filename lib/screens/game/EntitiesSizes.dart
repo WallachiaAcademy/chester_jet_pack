@@ -16,7 +16,7 @@ const double kBonusHpHeightRatio = 0.1067;
 const double kCoinWidthRatio = 0.06;
 const double kCoinHeightRatio = 0.1067;
 const double kCoinSpeed = 2;
-const double kCoinReward = 100;
+const double kCoinReward = 10;
 
 const double kWoodBoxWidthRatio = 0.06;
 const double kWoodBoxHeightRatio = 0.10;

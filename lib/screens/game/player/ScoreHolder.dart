@@ -36,7 +36,7 @@ class ScoreHolder extends BaseWidget {
 
   @override
   void update(double t) {
-    _score += t * 5;
+    _score += t * 2;
     _staticText.update(_score.toInt().toString());
   }
 
