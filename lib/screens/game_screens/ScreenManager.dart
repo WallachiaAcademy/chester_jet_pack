@@ -3,10 +3,12 @@ import 'dart:ui';
 
 import 'package:chesterjetpack/screens/BaseWidget.dart';
 import 'package:chesterjetpack/screens/game/data/UserData.dart';
+import 'package:chesterjetpack/screens/game_screens/LoadingScreen.dart';
 import 'package:chesterjetpack/screens/game_screens/PlayGround.dart';
 import 'package:chesterjetpack/screens/game_screens/ScoreScreen.dart';
 import 'package:chesterjetpack/screens/game_screens/ScreenState.dart';
 import 'package:chesterjetpack/screens/utils/SizeHolder.dart';
+import 'package:flame/flame.dart';
 import 'package:flame/game/game.dart';
 import 'package:flame/gestures.dart';
 import 'package:flame/util.dart';
@@ -22,6 +24,7 @@ class ScreenManager extends Game with TapDetector {
   ScreenState _screenState;
 
   // Screens
+  BaseWidget _loadingScreen;
   BaseWidget _mainScreen;
   BaseWidget _playScreen;
   BaseWidget _scoreScreen;
@@ -29,13 +32,13 @@ class ScreenManager extends Game with TapDetector {
   ScreenManager() {
     _fn = _init;
 
-    _screenState = ScreenState.kMenuScreen;
+    _screenState = ScreenState.kLoadingScreen;
   }
 
   @override
   void resize(Size size) {
     screenSize = size;
-    _mainScreen?.resize();
+    _loadingScreen?.resize();
   }
 
   @override
@@ -53,12 +56,66 @@ class ScreenManager extends Game with TapDetector {
     _mainScreen = MainScreen();
     _playScreen = PlayGround();
     _scoreScreen = ScoreScreen();
+    _loadingScreen = LoadingScreen();
 
     Util flameUtils = Util();
     await flameUtils.fullScreen();
     await flameUtils.setOrientation(DeviceOrientation.landscapeLeft);
 
     userData.loadData();
+    await loadAssets();
+
+    switchScreen(ScreenState.kMenuScreen);
+  }
+
+  Future<void> loadAssets() async {
+    await Flame.images.loadAll(<String>[
+      'common/0.png',
+      'common/1.png',
+      'common/2.png',
+      'common/3.png',
+      'common/4.png',
+      'enemies/bomb/bomb0.png',
+      'enemies/bomb/bomb1.png',
+      'enemies/electric_obstacle/0.png',
+      'enemies/electric_obstacle/1.png',
+      'enemies/electric_obstacle/2.png',
+      'enemies/electric_obstacle/3.png',
+      'enemies/rocket/rocket0.png',
+      'menu/Background.png',
+      'menu/FshareBtn.png',
+      'menu/logo.png',
+      'menu/start_btn.png',
+      'player/1.png',
+      'player/2.png',
+      'player/3.png',
+      'player/4.png',
+      'player/hp.png',
+      'player/s1.png',
+      'player/s2.png',
+      'player/s3.png',
+      'player/s4.png',
+      'play_ground/background.png',
+      'play_ground/border.png',
+      'rewards/coin0.png',
+      'rewards/coin1.png',
+      'rewards/coin2.png',
+      'rewards/coin3.png',
+      'rewards/coin4.png',
+      'rewards/coin5.png',
+      'rewards/hp0.png',
+      'rewards/hp1.png',
+      'score/Background.png',
+      'score/exit_to_menu.png',
+      'score/play_again.png',
+      'stage/bottom_pillar_back.png',
+      'stage/bottom_pillar_front.png',
+      'stage/metal_box.png',
+      'stage/spikes.png',
+      'stage/top_pillar_back.png',
+      'stage/top_pillar_front.png',
+      'stage/wood_box.png',
+    ]);
   }
 
   void _update(double t) {
@@ -71,6 +128,8 @@ class ScreenManager extends Game with TapDetector {
 
   BaseWidget _getActiveScreen() {
     switch (_screenState) {
+      case ScreenState.kLoadingScreen:
+        return _loadingScreen;
       case ScreenState.kMenuScreen:
         return _mainScreen;
       case ScreenState.kPlayScreen:
@@ -84,6 +143,11 @@ class ScreenManager extends Game with TapDetector {
 
   void switchScreen(ScreenState newScreen) {
     switch (newScreen) {
+      case ScreenState.kLoadingScreen:
+        _loadingScreen = LoadingScreen();
+        _loadingScreen.resize();
+        _screenState = newScreen;
+        break;
       case ScreenState.kMenuScreen:
         _mainScreen = MainScreen();
         _mainScreen.resize();
