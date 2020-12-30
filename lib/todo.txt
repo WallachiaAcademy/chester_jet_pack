@@ -1,9 +1,9 @@
-Video 33:
-- Change game icon.
-
 Video 34:
 - Implement loading screen
 - Preload images during init phase.
+
+Video 35:
+- Publish the very first version
 
 
 Mechanisms:
