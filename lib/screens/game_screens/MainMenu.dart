@@ -15,8 +15,8 @@ class MainScreen extends BaseWidget {
   MainScreen() {
     _background = Background('menu/Background.png');
 
-    _startButton = Controller(0.35, 0.5, 0.3, 0.15, 'menu/start_btn.png');
-    _logo = Controller(0.25, 0.15, 0.5, 0.3, 'menu/logo.png');
+    _startButton = Controller(0.35, 0.7, 0.3, 0.15, 'menu/start_btn.png');
+    _logo = Controller(0.25, 0.1, 0.5, 0.5, 'menu/logo.png');
   }
   @override
   void render(Canvas canvas) {

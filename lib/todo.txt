@@ -1,8 +1,19 @@
+Video 33:
+- Implement catchy infinite story
+- Reduce the reward gained by collecting gold/play the game
+- Change the logo.
+- Change game name.
+- Change game icon.
+
+Video 34:
+- Implement loading screen
+- Preload images during init phase.
+
+
 Mechanisms:
 - Background music.
 - Implement environment music (such as collect coin or explode bomb).
-- Preload images during init phase.
-- Change game name.
+
 
 Screens:
 - ScoreScreen:
@@ -13,11 +24,8 @@ Screens:
         - Disable/Enable Music
 - Menu Screen
     - Add a button to share the game to your friends
-	- Change the logo
 - Rate the app screen
 - Follow us screen
 - About screen
 
-Story:
-- Implement a catchy story
 
