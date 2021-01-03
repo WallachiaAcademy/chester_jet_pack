@@ -116,6 +116,8 @@ class ScreenManager extends Game with TapDetector {
       'stage/top_pillar_front.png',
       'stage/wood_box.png',
     ]);
+
+    await Flame.audio.loadAll(['explosion.ogg']);
   }
 
   void _update(double t) {
