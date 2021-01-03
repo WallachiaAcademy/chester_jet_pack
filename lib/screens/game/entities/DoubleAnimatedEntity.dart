@@ -112,6 +112,10 @@ abstract class DoubleAnimatedEntity extends BaseEntity {
     return _entityState == EntityState.Dead;
   }
 
+  bool isDeadOngoing() {
+    return _entityState == EntityState.Dying;
+  }
+
   @mustCallSuper
   void hitSuper() {
     _entityState = EntityState.Dying;

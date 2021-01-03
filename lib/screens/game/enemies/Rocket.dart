@@ -1,5 +1,6 @@
 import 'dart:ui';
 
+import 'package:chesterjetpack/audio/SoundsHandler.dart';
 import 'package:chesterjetpack/screens/game/EntitiesSizes.dart';
 import 'package:chesterjetpack/screens/game/entities/DoubleAnimatedEntity.dart';
 import 'package:chesterjetpack/screens/game/player/BasePlayer.dart';
@@ -47,8 +48,11 @@ class Rocket extends DoubleAnimatedEntity {
 
   @override
   void hit(BasePlayer player) {
-    super.hitSuper();
-    player.hit();
+    if (!super.isDeadOngoing()) {
+      soundsHandler.playExplosion();
+      super.hitSuper();
+      player.hit();
+    }
   }
 
   @override
