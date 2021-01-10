@@ -55,6 +55,7 @@ flutter:
     - assets/images/rewards/
     - assets/images/stage/
     - assets/audio/explosion.ogg
+    - assets/audio/background_music.mp3
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

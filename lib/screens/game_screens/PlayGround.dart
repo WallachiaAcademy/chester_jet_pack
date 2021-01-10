@@ -1,5 +1,6 @@
 import 'dart:ui';
 
+import 'package:chesterjetpack/audio/SoundsHandler.dart';
 import 'package:chesterjetpack/screens/BaseWidget.dart';
 import 'package:chesterjetpack/screens/game/EntitiesSizes.dart';
 import 'package:chesterjetpack/screens/game/data/UserData.dart';
@@ -26,6 +27,9 @@ class PlayGround extends BaseWidget {
   BaseWidget _pauseWidget;
   bool _isGamePaused = false;
 
+  BaseWidget _musicOff;
+  BaseWidget _musicOn;
+
   bool _isGameOver = false;
 
   PlayGround() {
@@ -44,8 +48,10 @@ class PlayGround extends BaseWidget {
     );
     _player = Player();
 
-    _pauseButton = Controller(
-        0.02, 0.03, 0.06, 0.1, 'play_ground/pause_widget/pause_button.png');
+    _pauseButton =
+        Controller(0.02, 0.03, 0.06, 0.1, 'play_ground/pause_button.png');
+    _musicOff = Controller(0.1, 0.03, 0.06, 0.1, 'play_ground/sound_off.png');
+    _musicOn = Controller(0.1, 0.03, 0.06, 0.1, 'play_ground/sound_on.png');
     _pauseWidget = PauseWidget(() {
       _isGamePaused = false;
     }, () {
@@ -56,13 +62,21 @@ class PlayGround extends BaseWidget {
   }
   @override
   void onTapDown(TapDownDetails detail, Function fn) {
+    bool musicToggled = false;
     _pauseButton.onTapDown(detail, () {
       _isGamePaused = true;
     });
 
     if (!_isGamePaused) {
-      _player.onTapDown(detail, () {});
-      storyHandler.onTapDown(detail, fn);
+      _musicOff.onTapDown(detail, () {
+        userData.toggleMusic();
+        soundsHandler.update();
+        musicToggled = true;
+      });
+      if (!musicToggled) {
+        _player.onTapDown(detail, () {});
+        storyHandler.onTapDown(detail, fn);
+      }
     } else {
       _pauseWidget.onTapDown(detail, () {});
     }
@@ -77,6 +91,11 @@ class PlayGround extends BaseWidget {
     _player.render(canvas);
     _pauseButton.render(canvas);
     if (_isGamePaused) _pauseWidget.render(canvas);
+
+    if (userData.shallPlayMusic())
+      _musicOn.render(canvas);
+    else
+      _musicOff.render(canvas);
   }
 
   @override
@@ -87,6 +106,8 @@ class PlayGround extends BaseWidget {
     _player.resize();
     _pauseButton.resize();
     _pauseWidget.resize();
+    _musicOff.resize();
+    _musicOn.resize();
     storyHandler.resize();
   }
 
