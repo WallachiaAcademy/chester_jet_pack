@@ -45,6 +45,7 @@ flutter:
   assets:
     - assets/images/menu/
     - assets/images/play_ground/
+    - assets/images/play_ground/pause_widget/
     - assets/images/score/
     - assets/images/player/
     - assets/images/enemies/rocket/
