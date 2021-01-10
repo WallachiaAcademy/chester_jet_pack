@@ -4,9 +4,11 @@ UserData userData = UserData();
 
 class UserData {
   final String _bestScoreKey = "__best_score__";
+  final String _playMusicKey = "__play_music__";
 
   int _bestScore = 0;
   int _curScore = 0;
+  bool _shallPlayMusic;
 
   int getBestScore() => _bestScore;
   int getCurScore() => _curScore;
@@ -23,11 +25,19 @@ class UserData {
     SharedPreferences prefs = await SharedPreferences.getInstance();
 
     _bestScore = (prefs.getInt(_bestScoreKey) ?? 0);
+    _shallPlayMusic = (prefs.getBool(_playMusicKey) ?? true);
   }
 
   void _saveData() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
 
     prefs.setInt(_bestScoreKey, _bestScore);
+    prefs.setBool(_playMusicKey, _shallPlayMusic);
   }
+
+  void toggleMusic() {
+    _shallPlayMusic = !_shallPlayMusic;
+  }
+
+  bool shallPlayMusic() => _shallPlayMusic;
 }

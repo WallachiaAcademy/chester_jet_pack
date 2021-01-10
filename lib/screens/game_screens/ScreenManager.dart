@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:ui';
 
+import 'package:chesterjetpack/audio/SoundsHandler.dart';
 import 'package:chesterjetpack/screens/BaseWidget.dart';
 import 'package:chesterjetpack/screens/game/data/UserData.dart';
 import 'package:chesterjetpack/screens/game_screens/LoadingScreen.dart';
@@ -98,7 +99,9 @@ class ScreenManager extends Game with TapDetector {
       'play_ground/background.png',
       'play_ground/border.png',
       'play_ground/pause_widget/bg.png',
-      'play_ground/pause_widget/pause_button.png',
+      'play_ground/pause_button.png',
+      'play_ground/sound_off.png',
+      'play_ground/sound_on.png',
       'play_ground/pause_widget/resume_button.png',
       'play_ground/pause_widget/surrender_button.png',
       'rewards/coin0.png',
@@ -122,6 +125,9 @@ class ScreenManager extends Game with TapDetector {
     ]);
 
     await Flame.audio.loadAll(['explosion.ogg']);
+    await Flame.audio.loadAll(['background_music.mp3']);
+
+    soundsHandler.update();
   }
 
   void _update(double t) {

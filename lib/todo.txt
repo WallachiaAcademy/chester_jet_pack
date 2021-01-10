@@ -1,13 +1,10 @@
-Video 34:
-- Implement loading screen
-- Preload images during init phase.
+Video 39:
+- Enhance the background music to pause when game is minimized
+- Fix the explosion to be centered on the asset's center
 
-Video 35:
-- Publish the very first version
 
 
 Mechanisms:
-- Background music.
 - Implement environment music (such as collect coin or explode bomb).
 
 
