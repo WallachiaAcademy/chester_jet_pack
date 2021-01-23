@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:ui';
 
+import 'package:chesterjetpack/ads/AdsManager.dart';
 import 'package:chesterjetpack/audio/SoundsHandler.dart';
 import 'package:chesterjetpack/screens/BaseWidget.dart';
 import 'package:chesterjetpack/screens/game/data/UserData.dart';
@@ -128,6 +129,7 @@ class ScreenManager extends Game with TapDetector {
     await Flame.audio.loadAll(['background_music.mp3']);
 
     soundsHandler.update();
+    AdsManager.instance.cacheAd();
   }
 
   void _update(double t) {

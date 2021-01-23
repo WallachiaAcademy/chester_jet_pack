@@ -1,5 +1,8 @@
 # This is a generated file; do not edit or check into version control.
 audioplayers=E:\\Tools\\flutter\\.pub-cache\\hosted\\pub.dartlang.org\\audioplayers-0.15.1\\
+firebase_admob=E:\\Tools\\flutter\\.pub-cache\\hosted\\pub.dartlang.org\\firebase_admob-0.10.3\\
+firebase_core=E:\\Tools\\flutter\\.pub-cache\\hosted\\pub.dartlang.org\\firebase_core-0.5.3\\
+firebase_core_web=E:\\Tools\\flutter\\.pub-cache\\hosted\\pub.dartlang.org\\firebase_core_web-0.2.1+1\\
 path_provider=E:\\Tools\\flutter\\.pub-cache\\hosted\\pub.dartlang.org\\path_provider-1.6.27\\
 path_provider_linux=E:\\Tools\\flutter\\.pub-cache\\hosted\\pub.dartlang.org\\path_provider_linux-0.0.1+2\\
 path_provider_macos=E:\\Tools\\flutter\\.pub-cache\\hosted\\pub.dartlang.org\\path_provider_macos-0.0.4+8\\
@@ -8,4 +11,4 @@ shared_preferences=E:\\Tools\\flutter\\.pub-cache\\hosted\\pub.dartlang.org\\sha
 shared_preferences_linux=E:\\Tools\\flutter\\.pub-cache\\hosted\\pub.dartlang.org\\shared_preferences_linux-0.0.2+4\\
 shared_preferences_macos=E:\\Tools\\flutter\\.pub-cache\\hosted\\pub.dartlang.org\\shared_preferences_macos-0.0.1+11\\
 shared_preferences_web=E:\\Tools\\flutter\\.pub-cache\\hosted\\pub.dartlang.org\\shared_preferences_web-0.1.2+7\\
-shared_preferences_windows=E:\\Tools\\flutter\\.pub-cache\\hosted\\pub.dartlang.org\\shared_preferences_windows-0.0.1+3\\
+shared_preferences_windows=E:\\Tools\\flutter\\.pub-cache\\hosted\\pub.dartlang.org\\shared_preferences_windows-0.0.2+2\\
