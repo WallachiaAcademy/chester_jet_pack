@@ -23,8 +23,9 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  flame: ^0.25.0
+  flame: ^0.28.0
   shared_preferences: ^0.5.12+4
+  firebase_admob: ^0.10.3
 
 dev_dependencies:
   flutter_test:

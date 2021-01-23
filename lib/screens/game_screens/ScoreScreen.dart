@@ -1,5 +1,6 @@
 import 'dart:ui';
 
+import 'package:chesterjetpack/ads/AdsManager.dart';
 import 'package:chesterjetpack/screens/BaseWidget.dart';
 import 'package:chesterjetpack/screens/game/EntitiesSizes.dart';
 import 'package:chesterjetpack/screens/game/data/UserData.dart';
@@ -34,11 +35,15 @@ class ScoreScreen extends BaseWidget {
   @override
   void onTapDown(TapDownDetails detail, Function fn) {
     _menu.onTapDown(detail, () {
-      screenManager.switchScreen(ScreenState.kMenuScreen);
+      AdsManager.instance.playNewAd(() {
+        screenManager.switchScreen(ScreenState.kMenuScreen);
+      });
     });
 
     _playAgain.onTapDown(detail, () {
-      screenManager.switchScreen(ScreenState.kPlayScreen);
+      AdsManager.instance.playNewAd(() {
+        screenManager.switchScreen(ScreenState.kPlayScreen);
+      });
     });
   }
 
