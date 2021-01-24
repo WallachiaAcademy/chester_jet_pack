@@ -40,4 +40,20 @@ class SoundsHandler {
       }
     } catch (Exception) {}
   }
+
+  void resume() {
+    try {
+      if (userData.shallPlayMusic() && _audioPlayer != null) {
+        _audioPlayer.resume();
+      }
+    } catch (Exception) {}
+  }
+
+  void pause() {
+    try {
+      if (userData.shallPlayMusic() && _audioPlayer != null) {
+        _audioPlayer.pause();
+      }
+    } catch (Exception) {}
+  }
 }

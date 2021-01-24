@@ -186,4 +186,11 @@ class ScreenManager extends Game with TapDetector {
         });
     }
   }
+
+  @override
+  void lifecycleStateChange(AppLifecycleState state) {
+    if (state == AppLifecycleState.resumed)
+      soundsHandler.resume();
+    else if (state == AppLifecycleState.paused) soundsHandler.pause();
+  }
 }
