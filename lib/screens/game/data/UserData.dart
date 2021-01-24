@@ -8,7 +8,7 @@ class UserData {
 
   int _bestScore = 0;
   int _curScore = 0;
-  bool _shallPlayMusic;
+  bool _shallPlayMusic = true;
 
   int getBestScore() => _bestScore;
   int getCurScore() => _curScore;
@@ -22,21 +22,26 @@ class UserData {
   }
 
   void loadData() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
+    try {
+      SharedPreferences prefs = await SharedPreferences.getInstance();
 
-    _bestScore = (prefs.getInt(_bestScoreKey) ?? 0);
-    _shallPlayMusic = (prefs.getBool(_playMusicKey) ?? true);
+      _bestScore = (prefs.getInt(_bestScoreKey) ?? 0);
+      _shallPlayMusic = (prefs.getBool(_playMusicKey) ?? true);
+    } catch (Exception) {}
   }
 
   void _saveData() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
+    try {
+      SharedPreferences prefs = await SharedPreferences.getInstance();
 
-    prefs.setInt(_bestScoreKey, _bestScore);
-    prefs.setBool(_playMusicKey, _shallPlayMusic);
+      prefs.setInt(_bestScoreKey, _bestScore);
+      prefs.setBool(_playMusicKey, _shallPlayMusic);
+    } catch (Exception) {}
   }
 
   void toggleMusic() {
     _shallPlayMusic = !_shallPlayMusic;
+    _saveData();
   }
 
   bool shallPlayMusic() => _shallPlayMusic;

@@ -32,13 +32,15 @@ class AdsManager {
   }
 
   Future<void> _cacheAd() async {
-    if (!_cacheOngoing) {
-      _cacheOngoing = true;
-      await _interstitialAd?.dispose();
-      _interstitialAd = _createInterstitialAd();
-      await _interstitialAd.load();
-      _cacheOngoing = false;
-    }
+    try {
+      if (!_cacheOngoing) {
+        _cacheOngoing = true;
+        await _interstitialAd?.dispose();
+        _interstitialAd = _createInterstitialAd();
+        await _interstitialAd.load();
+        _cacheOngoing = false;
+      }
+    } catch (Exception) {}
   }
 
   InterstitialAd _createInterstitialAd() {
