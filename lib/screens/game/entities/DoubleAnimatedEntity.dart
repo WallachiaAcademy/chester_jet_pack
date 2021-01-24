@@ -16,6 +16,7 @@ abstract class DoubleAnimatedEntity extends BaseEntity {
 
   double _x;
   double _yRatio;
+  double _xGap = 0;
 
   DoubleAnimatedEntity(
     String firstAniPath,
@@ -61,7 +62,7 @@ abstract class DoubleAnimatedEntity extends BaseEntity {
       _first.x = _x;
       _first.render(canvas);
     } else {
-      _second.x = _x;
+      _second.x = _x + _xGap;
       _second.render(canvas);
     }
     canvas.restore();
@@ -80,9 +81,12 @@ abstract class DoubleAnimatedEntity extends BaseEntity {
 
     _second.width = screenSize.width * sWR;
     _second.height = screenSize.height * sHR;
-    _second.y = screenSize.height * _yRatio;
+    _second.y =
+        screenSize.height * _yRatio + (_first.height - _second.height) / 2;
+    ;
 
     _x = screenSize.width;
+    _xGap = (_first.width - _second.width) / 2;
   }
 
   @mustCallSuper
